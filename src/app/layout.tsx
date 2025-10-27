@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "3D Projectile Simulator",
-  description: "Real-time physics simulation of projectile motion with interactive 3D visualization.",
+  title: "Parabola",
+  description: "Physics-based projectile motion simulator with realistic 3D visualization and sport-specific modes.",
   icons: {
     icon: [
       { url: "/logo.png", sizes: "any" },

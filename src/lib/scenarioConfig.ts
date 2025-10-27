@@ -149,8 +149,8 @@ export const SCENARIOS: Record<string, Scenario> = {
       { id: 3, type: 'soccer-goal', position: [40, 0, 10], distance: 40 },
       { id: 4, type: 'soccer-goal', position: [50, 0, 0], distance: 50 }
     ],
-    recommendedProjectile: 'basketball',
-    allowedProjectiles: ['basketball', 'cannonball'],
+    recommendedProjectile: 'soccerball',
+    allowedProjectiles: ['soccerball'],
     scoringInfo: 'Top Corner: 200pts | Upper 90: 150pts | Side Net: 125pts | Low Corner: 100pts | Center: 50pts'
   },
 
@@ -187,7 +187,7 @@ export const SCENARIOS: Record<string, Scenario> = {
       { id: 4, type: 'ring-target', position: [100, 0, 0], distance: 100 }
     ],
     recommendedProjectile: 'basketball',
-    allowedProjectiles: ['basketball', 'cannonball', 'bullet', 'airplane'],
+    allowedProjectiles: ['basketball', 'cannonball', 'soccerball'],
     scoringInfo: 'Bullseye: 100pts | Middle Ring: 50pts | Outer Ring: 25pts'
   }
 };

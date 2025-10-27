@@ -1,13 +1,14 @@
-# 3D Projectile Motion Simulator
+# Parabola
 
-Launch projectiles and watch them fly through 3D space. Adjust angle, velocity, and gravity to hit targets at different distances.
+Physics-based projectile motion simulator with realistic 3D visualization. Launch different projectiles and watch them follow authentic trajectories based on kinematic equations.
 
 ## Features
 
-- Real-time physics using kinematic equations
-- Multiple projectiles: basketball, cannonball, bullet, paper plane
-- Interactive 3D controls
-- Score points by hitting targets
+- Sport-specific modes: Basketball, Shooting Range, Soccer, Classic Targets
+- Real-time physics calculations
+- Dynamic camera angles for each sport
+- Authentic projectiles: basketball, soccer ball, bullet, cannonball
+- Score-based gameplay
 
 ## Tech Stack
 

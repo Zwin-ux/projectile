@@ -6,7 +6,7 @@ import { Trail } from '@react-three/drei';
 import * as THREE from 'three';
 import { TrajectoryPoint } from '@/lib/physics';
 
-export type ProjectileType = 'basketball' | 'cannonball' | 'bullet' | 'airplane';
+export type ProjectileType = 'basketball' | 'cannonball' | 'bullet' | 'airplane' | 'soccerball';
 
 interface ProjectileProps {
   trajectoryPoints: TrajectoryPoint[];
@@ -45,7 +45,7 @@ export default function Projectile({
     onPositionUpdate(point);
 
     // Add rotation for visual effect
-    if (projectileType === 'basketball' || projectileType === 'cannonball') {
+    if (projectileType === 'basketball' || projectileType === 'cannonball' || projectileType === 'soccerball') {
       meshRef.current.rotation.x += 0.1;
       meshRef.current.rotation.z += 0.05;
     } else if (projectileType === 'airplane') {
@@ -121,6 +121,19 @@ function getProjectileAppearance(type: ProjectileType) {
         ),
         scale: 1
       };
+    case 'soccerball':
+      return {
+        geometry: <sphereGeometry args={[0.55, 16, 16]} />,
+        material: (
+          <meshStandardMaterial
+            color="#ffffff"
+            emissive="#ffffff"
+            emissiveIntensity={0.1}
+            roughness={0.7}
+          />
+        ),
+        scale: 1
+      };
     case 'airplane':
       return {
         geometry: (
@@ -154,6 +167,8 @@ function getTrailColor(type: ProjectileType): string {
       return '#666666';
     case 'bullet':
       return '#ffd700';
+    case 'soccerball':
+      return '#06b6d4';
     case 'airplane':
       return '#ffffff';
     default:
@@ -169,6 +184,8 @@ function getSpeedMultiplier(type: ProjectileType): number {
       return 1.0;
     case 'bullet':
       return 3.0;
+    case 'soccerball':
+      return 1.4;
     case 'airplane':
       return 1.2;
     default:

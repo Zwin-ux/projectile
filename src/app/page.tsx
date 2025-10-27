@@ -19,10 +19,10 @@ export default function Home() {
               />
               <div>
                 <h1 className="text-lg sm:text-xl font-bold text-gray-100 tracking-tight leading-tight">
-                  3D Projectile Simulator
+                  Parabola
                 </h1>
                 <p className="text-xs text-gray-400 hidden sm:block">
-                  Visualize physics in motion
+                  Physics-based projectile simulator
                 </p>
               </div>
             </div>

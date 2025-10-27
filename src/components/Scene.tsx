@@ -171,7 +171,8 @@ export default function Scene() {
     basketball: { emoji: '🏀', name: 'Basketball', description: 'Bouncy and fun!' },
     cannonball: { emoji: '💣', name: 'Cannonball', description: 'Heavy and powerful' },
     bullet: { emoji: '🔫', name: 'Bullet', description: 'Fast and precise' },
-    airplane: { emoji: '✈️', name: 'Paper Plane', description: 'Light and wobbly' },
+    soccerball: { emoji: '⚽', name: 'Soccer Ball', description: 'FIFA regulation ball' },
+    airplane: { emoji: '✈️', name: 'Paper Plane', description: 'Light and wobbly' }
   };
 
   // Get ground color based on scenario
