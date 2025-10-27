@@ -1,1 +1,160 @@
-﻿甧敳挠楬湥❴਻⼊⨪ ‪牔楡楮杮潍敤䌠浯潰敮瑮 ‪慍湩漠捲敨瑳慲楴湯挠浯潰敮瑮映牯洠摯⽥瑳条⁥敳敬瑣潩⁮湡⁤潲湵⁤慭慮敧敭瑮 ⼪ਊ浩潰瑲笠甠敳晅敦瑣‬獵剥晥‬獵卥慴整素映潲⁭爧慥瑣㬧椊灭牯⁴⁻慃癮獡素映潲⁭䀧敲捡⵴桴敲⽥楦敢❲਻浩潰瑲笠传扲瑩潃瑮潲獬素映潲⁭䀧敲捡⵴桴敲⽥牤楥㬧椊灭牯⁴⁻獵䝥浡卥潴敲素映潲⁭䀧猯潴敲术浡卥潴敲㬧椊灭牯⁴⁻潭敤ⱳ猠慴敧ⱳ朠瑥瑓条ⱥ琠灹⁥慇敭潍敤摉‬祴数匠慴敧摉素映潲⁭䀧氯扩术浡䍥湯楦❧਻浩潰瑲笠挠敨正敓浧湥䡴瑩⁳⁽牦浯✠⽀楬⽢楨䑴瑥捥楴湯㬧椊灭牯⁴牔楡楮杮慔杲瑥映潲⁭⸧启慲湩湩呧牡敧❴਻浩潰瑲吠慲湩湩䡧䑕映潲⁭⸧启慲湩湩䡧䑕㬧椊灭牯⁴潒湵卤浵慭祲映潲⁭⸧刯畯摮畓浭牡❹਻浩潰瑲䰠慥敤扲慯摲慐敮⁬牦浯✠⼮敌摡牥潢牡偤湡汥㬧ਊ硥潰瑲搠晥畡瑬映湵瑣潩⁮牔楡楮杮潍敤⤨笠 挠湯瑳笠椠剳畯摮捁楴敶‬畣牲湥䵴摯䥥Ɽ挠牵敲瑮瑓条䥥Ɽ猠慴瑲潒湵Ɽ琠捩呫浩牥素㴠甠敳慇敭瑓牯⡥㬩 挠湯瑳嬠敳敬瑣摥潍敤‬敳却汥捥整䵤摯嵥㴠甠敳瑓瑡㱥慇敭潍敤摉⠾瀧敲楣楳湯⤧਻†潣獮⁴獛汥捥整卤慴敧‬敳却汥捥整卤慴敧⁝‽獵卥慴整匼慴敧摉⠾戧来湩敮❲㬩ਊ†⼯吠浩牥氠潯⁰潦⁲䥔䕍⁄潭敤 挠湯瑳氠獡呴浩剥晥㴠甠敳敒⡦慄整渮睯⤨㬩 甠敳晅敦瑣⠨ 㸽笠 †椠⁦ℨ獩潒湵䅤瑣癩⁥籼挠牵敲瑮潍敤摉℠㴽✠楴敭❤ 敲畴湲਻ †挠湯瑳椠瑮牥慶⁬‽敳䥴瑮牥慶⡬⤨㴠‾੻†††潣獮⁴潮⁷‽慄整渮睯⤨਻†††潣獮⁴敤瑬䵡⁳‽潮⁷‭慬瑳楔敭敒⹦畣牲湥㭴 ††氠獡呴浩剥晥挮牵敲瑮㴠渠睯਻†††楴正楔敭⡲敤瑬䵡⥳਻††ⱽㄠ〰㬩ਊ††敲畴湲⠠ 㸽挠敬牡湉整癲污椨瑮牥慶⥬਻†ⱽ嬠獩潒湵䅤瑣癩ⱥ挠牵敲瑮潍敤摉‬楴正楔敭嵲㬩ਊ†⼯删獥瑥琠浩牥爠晥牥湥散眠敨⁮潲湵⁤瑳牡獴 甠敳晅敦瑣⠨ 㸽笠 †椠⁦椨剳畯摮捁楴敶 ੻†††慬瑳楔敭敒⹦畣牲湥⁴‽慄整渮睯⤨਻††੽†ⱽ嬠獩潒湵䅤瑣癩嵥㬩ਊ†潣獮⁴慨摮敬瑓牡剴畯摮㴠⠠ 㸽笠 †猠慴瑲潒湵⡤敳敬瑣摥潍敤‬敳敬瑣摥瑓条⥥਻†㭽ਊ†敲畴湲⠠ †㰠楤⁶汣獡乳浡㵥爢汥瑡癩⁥⵷畦汬栠猭牣敥≮ਾ†††⽻‪潍敤匯慴敧匠汥捥楴湯⠠桳睯⁮桷湥渠瑯椠⁮潲湵⥤⨠累 ††笠椡剳畯摮捁楴敶☠…ਨ††††搼癩挠慬獳慎敭∽扡潳畬整椠獮瑥〭稠㈭‰杢戭慬正㘯‰慢正牤灯戭畬⵲浳映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整≲ਾ†††††搼癩挠慬獳慎敭∽杢戭慬正㤯‰潢摲牥戠牯敤⵲⍛攱〴晡⁝潲湵敤ⵤ摭瀠㐭洠硡眭㈭汸眠昭汵⁬硭㐭㸢 †††††㰠ㅨ挠慬獳慎敭∽整瑸砭⁳潦瑮洭湯⁯灵数捲獡⁥牴捡楫杮眭摩獥⁴整瑸嬭ㄣ㑥愰嵦洠ⵢ′整瑸挭湥整≲ਾ†††††††䅔䝒呅䌠䅈䱌久䕇 †††††㰠栯㸱 †††††㰠⁰汣獡乳浡㵥琢硥⵴桷瑩⽥〶琠硥⵴散瑮牥洠ⵢ∸ਾ†††††††敓敬瑣洠摯⁥湡⁤瑳条⁥潴戠来湩 †††††㰠瀯ਾ †††††笠⨯䴠摯⁥敓敬瑣潩⁮⼪੽††††††搼癩挠慬獳慎敭∽扭㘭㸢 ††††††㰠慬敢⁬汣獡乳浡㵥戢潬正琠硥⵴桷瑩⁥整瑸猭⁭潦瑮洭湯⁯灵数捲獡⁥扭㌭㸢 †††††††䜠浡⁥潍敤 ††††††㰠氯扡汥ਾ†††††††搼癩挠慬獳慎敭∽牧摩朠楲ⵤ潣獬㈭朠灡㐭㸢 †††††††笠潭敤⹳慭⡰洨摯⥥㴠‾ਨ†††††††††戼瑵潴੮††††††††††敫㵹浻摯⹥摩੽††††††††††湯汃捩㵫⡻ 㸽猠瑥敓敬瑣摥潍敤洨摯⹥摩紩 †††††††††挠慬獳慎敭笽灠㌭爠畯摮摥洭⁤潢摲牥琠慲獮瑩潩⵮潣潬獲␠੻†††††††††††敳敬瑣摥潍敤㴠㴽洠摯⹥摩 †††††††††††㼠✠潢摲牥嬭〣戶搶崴戠ⵧ⍛㘰㙢㑤⽝〲ਧ††††††††††††›戧牯敤⵲桷瑩⽥〲戠ⵧ汢捡⽫〲栠癯牥戺牯敤⵲桷瑩⽥〴ਧ††††††††††恽੽†††††††††ਾ††††††††††搼癩挠慬獳慎敭∽整瑸眭楨整映湯⵴潭潮琠硥⵴浳洠ⵢ∱笾潭敤氮扡汥㱽搯癩ਾ††††††††††搼癩挠慬獳慎敭∽整瑸札慲⵹〳‰整瑸砭⁳潦瑮洭湯≯笾潭敤搮獥牣灩楴湯㱽搯癩ਾ†††††††††⼼畢瑴湯ਾ††††††††⤩੽†††††††⼼楤㹶 †††††㰠搯癩ਾ †††††笠⨯匠慴敧匠汥捥楴湯⨠累 †††††㰠楤⁶汣獡乳浡㵥洢ⵢ∸ਾ†††††††氼扡汥挠慬獳慎敭∽汢捯⁫整瑸眭楨整琠硥⵴浳映湯⵴潭潮甠灰牥慣敳洠ⵢ∳ਾ††††††††瑓条੥†††††††⼼慬敢㹬 ††††††㰠楤⁶汣獡乳浡㵥朢楲⁤牧摩挭汯⵳″慧⵰∳ਾ††††††††獻慴敧⹳慭⡰猨慴敧 㸽⠠ ††††††††㰠畢瑴湯 †††††††††欠祥笽瑳条⹥摩੽††††††††††湯汃捩㵫⡻ 㸽猠瑥敓敬瑣摥瑓条⡥瑳条⹥摩紩 †††††††††挠慬獳慎敭笽灠㈭爠畯摮摥洭⁤潢摲牥琠慲獮瑩潩⵮潣潬獲␠੻†††††††††††敳敬瑣摥瑓条⁥㴽‽瑳条⹥摩 †††††††††††㼠✠潢摲牥嬭〣戶搶崴戠ⵧ⍛㘰㙢㑤⽝〲ਧ††††††††††††›戧牯敤⵲桷瑩⽥〲戠ⵧ汢捡⽫〲栠癯牥戺牯敤⵲桷瑩⽥〴ਧ††††††††††恽੽†††††††††ਾ††††††††††搼癩挠慬獳慎敭∽整瑸眭楨整映湯⵴潭潮琠硥⵴獸洠ⵢ∱笾瑳条⹥慬敢絬⼼楤㹶 †††††††††㰠楤⁶汣獡乳浡㵥琢硥⵴牧祡㌭〰琠硥⵴ㅛ瀱嵸映湯⵴潭潮㸢獻慴敧搮獥牣灩楴湯㱽搯癩ਾ†††††††††⼼畢瑴湯ਾ††††††††⤩੽†††††††⼼楤㹶 †††††㰠搯癩ਾ †††††笠⨯匠慴瑲䈠瑵潴⁮⼪੽††††††戼瑵潴੮†††††††湯汃捩㵫桻湡汤卥慴瑲潒湵絤 ††††††挠慬獳慎敭∽⵷畦汬瀠⵸″祰㈭琠硥⵴獸映湯⵴潭潮戠牯敤⁲潢摲牥嬭〣戶搶崴琠硥⵴⍛㘰㙢㑤⁝潨敶㩲杢嬭〣戶搶崴ㄯ∰ †††††㸠⁛呓剁⁔㱝戯瑵潴㹮 ††††㰠搯癩ਾ††††⼼楤㹶 ††⤠੽ ††笠⨯䠠䑕⨠累 ††㰠牔楡楮杮啈⁄㸯ਊ†††⽻‪潒湵⁤畓浭牡⁹⼪੽†††刼畯摮畓浭牡⁹㸯ਊ†††⽻‪敌摡牥潢牡⁤戨瑯潴⁭楲桧⁴桷湥渠瑯椠⁮潲湵⥤⨠累 ††笠椡剳畯摮捁楴敶☠…ਨ††††搼癩挠慬獳慎敭∽扡潳畬整戠瑯潴⵭‴楲桧⵴‴⵺〱㸢 ††††㰠敌摡牥潢牡偤湡汥⼠ਾ††††⼼楤㹶 ††⤠੽ ††笠⨯㌠⁄捓湥⁥⼪੽†††匼散敮楗桴慔杲瑥⁳㸯 †㰠搯癩ਾ†㬩紊ਊ⨯ਪ⨠㌠⁄捓湥⁥楷桴琠牡敧獴 ‪佔佄›湉整牧瑡⁥楷桴攠楸瑳湩⁧牰橯捥楴敬猠獹整੭⨠ਯ畦据楴湯匠散敮楗桴慔杲瑥⡳ ੻†潣獮⁴⁻畣牲湥却慴敧摉‬楨獴‬獩潒湵䅤瑣癩ⱥ爠来獩整䡲瑩素㴠甠敳慇敭瑓牯⡥㬩 挠湯瑳猠慴敧㴠挠牵敲瑮瑓条䥥⁤‿敧却慴敧挨牵敲瑮瑓条䥥⥤㨠渠汵㭬ਊ†⼯吠䑏㩏䌠湯敮瑣琠⁯硥獩楴杮瀠潲敪瑣汩⁥祳瑳浥 ⼠ 桔獩椠⁳⁡汰捡桥汯敤⁲潦⁲牰橯捥楴敬椠瑮来慲楴湯 挠湯瑳栠湡汤健潲敪瑣汩啥摰瑡⁥‽瀨敲偶獯›湛浵敢Ⱳ渠浵敢Ⱳ渠浵敢嵲‬畣牲潐㩳嬠畮扭牥‬畮扭牥‬畮扭牥⥝㴠‾੻††晩⠠猡慴敧簠⁼椡剳畯摮捁楴敶 敲畴湲਻ †挠湯瑳栠瑩敒畳瑬⁳‽档捥卫来敭瑮楈獴瀨敲偶獯‬畣牲潐ⱳ猠慴敧琮牡敧獴㬩 †栠瑩敒畳瑬⹳潦䕲捡⡨栨瑩 㸽笠 ††⼠ 桃捥⁫晩愠牬慥祤栠瑩 ††挠湯瑳愠牬慥祤楈⁴‽楨獴献浯⡥⁨㸽栠琮牡敧䥴⁤㴽‽楨⹴慴杲瑥摉㬩 ††椠⁦ℨ污敲摡䡹瑩 ੻††††敲楧瑳牥楈⡴楨⹴慴杲瑥摉‬楨⹴潰湩獴㬩 ††素 †素㬩 素਻ ⼠ 敇⁴敳⁴景栠瑩琠牡敧⁴䑉ੳ†潣獮⁴楨呴牡敧䥴獤㴠渠睥匠瑥栨瑩⹳慭⡰⁨㸽栠琮牡敧䥴⥤㬩ਊ†敲畴湲⠠ †㰠慃癮獡挠浡牥㵡筻瀠獯瑩潩㩮嬠ⰰ㔠‬〲ⱝ映癯›〶素㹽 ††㰠潣潬⁲瑡慴档∽慢正牧畯摮•牡獧笽❛〣〰〰✰絝⼠ਾ ††笠⨯䰠杩瑨湩⁧⼪੽†††愼扭敩瑮楌桧⁴湩整獮瑩㵹ほ㐮⁽㸯 ††㰠楤敲瑣潩慮䱬杩瑨瀠獯瑩潩㵮孻〱‬〱‬崵⁽湩整獮瑩㵹ㅻ⁽㸯 ††㰠楤敲瑣潩慮䱬杩瑨瀠獯瑩潩㵮孻ㄭⰰ㔠‬㔭絝椠瑮湥楳祴笽⸰紵⼠ਾ ††笠⨯䜠潲湵⁤片摩⨠累 ††㰠牧摩效灬牥愠杲㵳孻〲ⰰ㐠ⰰ✠〣戶搶✴‬⌧攱〴晡崧⁽㸯ਊ†††⽻‪敒摮牥琠牡敧獴椠⁦潲湵⁤獩愠瑣癩⁥⼪੽†††獻慴敧☠…獩潒湵䅤瑣癩⁥☦猠慴敧琮牡敧獴洮灡⠨慴杲瑥 㸽⠠ †††㰠牔楡楮杮慔杲瑥 ††††欠祥笽慴杲瑥椮絤 ††††琠牡敧㵴瑻牡敧絴 ††††椠䡳瑩笽楨呴牡敧䥴獤栮獡琨牡敧⹴摩紩 †††⼠ਾ†††⤩੽ ††笠⨯䌠浡牥⁡潃瑮潲獬⨠累 ††㰠牏楢䍴湯牴汯ੳ††††湥扡敬慄灭湩੧††††慤灭湩䙧捡潴㵲ほ〮紵 †††洠湩楄瑳湡散笽〱੽††††慭䑸獩慴据㵥㕻細 †††洠硡潐慬䅲杮敬笽慍桴倮⁉ 紲 ††⼠ਾ ††笠⨯吠䑏㩏䄠摤瀠潲敪瑣汩⁥敲摮牥湩⁧湡⁤桰獹捩⁳湩整牧瑡潩⁮敨敲⨠累 ††笠⨯䔠慸灭敬椠瑮来慲楴湯瀠楯瑮਺†††值潲敪瑣汩੥††††湯潐楳楴湯灕慤整笽瀨敲ⱶ挠牵⥲㴠‾慨摮敬牐橯捥楴敬灕慤整瀨敲ⱶ挠牵⥲੽†††㸯 ††⨠累 †㰠䌯湡慶㹳 ⤠਻੽਍਍਍
+'use client';
+
+/**
+ * TrainingMode Component
+ * Main orchestration component for mode/stage selection and round management
+ */
+
+import { useEffect, useRef, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import { useGameStore } from '@/store/gameStore';
+import { modes, stages, getStage, type GameModeId, type StageId } from '@/lib/gameConfig';
+import TrainingTarget from './TrainingTarget';
+import TrainingHUD from './TrainingHUD';
+import RoundSummary from './RoundSummary';
+import LeaderboardPanel from './LeaderboardPanel';
+
+export default function TrainingMode() {
+  const { isRoundActive, currentModeId, startRound, tickTimer } = useGameStore();
+  const [selectedMode, setSelectedMode] = useState<GameModeId>('precision');
+  const [selectedStage, setSelectedStage] = useState<StageId>('beginner');
+
+  // Timer loop for TIMED mode
+  const lastTimeRef = useRef<number>(0);
+  useEffect(() => {
+    if (!isRoundActive || currentModeId !== 'timed') return;
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const deltaMs = now - lastTimeRef.current;
+      lastTimeRef.current = now;
+      tickTimer(deltaMs);
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [isRoundActive, currentModeId, tickTimer]);
+
+  // Reset timer reference when round starts
+  useEffect(() => {
+    if (isRoundActive) {
+      lastTimeRef.current = Date.now();
+    }
+  }, [isRoundActive]);
+
+  const handleStartRound = () => {
+    startRound(selectedMode, selectedStage);
+  };
+
+  const currentStage = getStage(selectedStage);
+
+  return (
+    <div className="min-h-screen bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {!isRoundActive ? (
+          <div className="space-y-6">
+            {/* Mode Selection */}
+            <div>
+              <h2 className="text-xs font-mono uppercase tracking-widest text-[#06b6d4] mb-3">
+                SELECT MODE
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {modes.map((mode) => (
+                  <button
+                    key={mode.id}
+                    onClick={() => setSelectedMode(mode.id)}
+                    className={`p-4 border rounded-md text-left transition-colors ${
+                      selectedMode === mode.id
+                        ? 'border-[#06b6d4] bg-[#06b6d4]/10'
+                        : 'border-[#1e40af] bg-black/40 hover:border-[#06b6d4]/50'
+                    }`}
+                  >
+                    <div className="text-sm font-mono font-bold text-white mb-1">
+                      {mode.label}
+                    </div>
+                    <div className="text-xs text-gray-400">
+                      {mode.description}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Stage Selection */}
+            <div>
+              <h2 className="text-xs font-mono uppercase tracking-widest text-[#06b6d4] mb-3">
+                SELECT STAGE
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {stages.map((stage) => (
+                  <button
+                    key={stage.id}
+                    onClick={() => setSelectedStage(stage.id)}
+                    className={`p-4 border rounded-md text-left transition-colors ${
+                      selectedStage === stage.id
+                        ? 'border-[#06b6d4] bg-[#06b6d4]/10'
+                        : 'border-[#1e40af] bg-black/40 hover:border-[#06b6d4]/50'
+                    }`}
+                  >
+                    <div className="text-sm font-mono font-bold text-white mb-1">
+                      {stage.label}
+                    </div>
+                    <div className="text-xs text-gray-400">
+                      {stage.description}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Start Button */}
+            <div className="flex justify-center pt-4">
+              <button
+                onClick={handleStartRound}
+                className="px-8 py-4 text-sm font-mono border-2 border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4]/10 transition-colors"
+              >
+                [ START ROUND ]
+              </button>
+            </div>
+
+            {/* Leaderboard */}
+            <LeaderboardPanel />
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {/* 3D Viewport */}
+            <div className="h-[500px] border border-[#1e40af] rounded-md overflow-hidden">
+              <Canvas camera={{ position: [0, 10, 30], fov: 50 }}>
+                <color attach="background" args={['#000000']} />
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[10, 10, 5]} intensity={1} />
+
+                {/* Ground */}
+                <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+                  <planeGeometry args={[300, 300]} />
+                  <meshStandardMaterial color="#1a1a1a" />
+                </mesh>
+
+                {/* Targets */}
+                {currentStage?.targets.map((target) => (
+                  <TrainingTarget
+                    key={target.id}
+                    target={target}
+                    isHit={false}
+                  />
+                ))}
+
+                <OrbitControls />
+              </Canvas>
+            </div>
+
+            {/* HUD */}
+            <TrainingHUD />
+          </div>
+        )}
+
+        {/* Round Summary Modal */}
+        <RoundSummary />
+      </div>
+    </div>
+  );
+}
