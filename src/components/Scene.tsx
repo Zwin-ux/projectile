@@ -33,10 +33,15 @@ export default function Scene() {
   const previousProjectilePos = useRef<TrajectoryPoint | null>(null);
   const [lastHitScore, setLastHitScore] = useState<{ points: number; type: string } | null>(null);
 
-  // Generate trajectory
+  // Generate trajectory with launch height
   const trajectoryPoints = useMemo(() => {
-    return generateTrajectory({ speed, angleDeg: angle, gravity });
-  }, [speed, angle, gravity]);
+    return generateTrajectory(
+      { speed, angleDeg: angle, gravity },
+      0.02,
+      100,
+      scenario.launchPoint.height
+    );
+  }, [speed, angle, gravity, scenario.launchPoint.height]);
 
   // Calculate stats
   const stats = useMemo(() => {
@@ -57,12 +62,23 @@ export default function Scene() {
 
     setCurrentScenarioId(scenarioId);
     const newScenario = getScenario(scenarioId);
+    
+    // Apply default physics for this sport
+    setSpeed(newScenario.defaultPhysics.speed);
+    setAngle(newScenario.defaultPhysics.angle);
+    
     setProjectileType(newScenario.recommendedProjectile);
     setScore(0);
     setHitTargets(new Set());
     setScoredTargets(new Map());
     setLastHitScore(null);
   }, [isAnimating]);
+
+  // Reset to sport defaults
+  const handleResetDefaults = useCallback(() => {
+    setSpeed(scenario.defaultPhysics.speed);
+    setAngle(scenario.defaultPhysics.angle);
+  }, [scenario]);
 
   // Fire button handler
   const handleFire = useCallback(() => {
@@ -175,7 +191,13 @@ export default function Scene() {
         )}
 
         <Canvas
-          camera={{ position: [60, 35, 90], fov: 50 }}
+          camera={{ 
+            position: scenario.camera.position, 
+            fov: scenario.camera.fov 
+          }}
+          onCreated={({ camera }) => {
+            camera.lookAt(scenario.camera.lookAt[0], scenario.camera.lookAt[1], scenario.camera.lookAt[2]);
+          }}
           style={{ background: '#0a0a0a' }}
         >
           {/* Lighting */}
@@ -192,8 +214,8 @@ export default function Scene() {
           {/* Grid helper */}
           <gridHelper args={[200, 40, '#333333', '#222222']} position={[0, 0.01, 0]} />
 
-          {/* Launch point */}
-          <mesh position={[0, 0, 0]}>
+          {/* Launch point - positioned at scenario height */}
+          <mesh position={[0, scenario.launchPoint.height, 0]}>
             <cylinderGeometry args={[1, 1.5, 0.5, 16]} />
             <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={0.5} />
           </mesh>
@@ -351,7 +373,19 @@ export default function Scene() {
 
         {/* Physics Controls */}
         <div className="bg-gray-900/50 rounded-panel border border-primary-800/40 p-5 shadow-panel">
-          <h2 className="text-base font-bold text-gray-100 mb-4 tracking-tight">Physics Controls</h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-base font-bold text-gray-100 tracking-tight">Physics Controls</h2>
+            <button
+              onClick={handleResetDefaults}
+              className="text-xs text-accent hover:text-accent-400 transition-colors font-medium"
+              title="Reset to sport defaults"
+            >
+              ↻ Reset
+            </button>
+          </div>
+          <div className="text-xs text-gray-500 mb-3">
+            📍 {scenario.launchPoint.description}
+          </div>
 
           {/* Speed */}
           <div className="mb-4">
@@ -360,8 +394,8 @@ export default function Scene() {
             </label>
             <input
               type="range"
-              min="10"
-              max="100"
+              min={scenario.defaultPhysics.speedRange[0]}
+              max={scenario.defaultPhysics.speedRange[1]}
               step="1"
               value={speed}
               onChange={(e) => setSpeed(Number(e.target.value))}
@@ -377,8 +411,8 @@ export default function Scene() {
             </label>
             <input
               type="range"
-              min="5"
-              max="85"
+              min={scenario.defaultPhysics.angleRange[0]}
+              max={scenario.defaultPhysics.angleRange[1]}
               step="1"
               value={angle}
               onChange={(e) => setAngle(Number(e.target.value))}

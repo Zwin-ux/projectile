@@ -27,12 +27,14 @@ export interface FlightStats {
  * @param params - Initial conditions (speed, angle, gravity)
  * @param dt - Time step for sampling (default: 0.02s)
  * @param maxTime - Maximum simulation time (default: 100s)
+ * @param launchHeight - Starting height in meters (default: 0)
  * @returns Array of trajectory points
  */
 export function generateTrajectory(
   params: ProjectileParams,
   dt: number = 0.02,
-  maxTime: number = 100
+  maxTime: number = 100,
+  launchHeight: number = 0
 ): TrajectoryPoint[] {
   const { speed, angleDeg, gravity } = params;
 
@@ -49,7 +51,7 @@ export function generateTrajectory(
   // Generate trajectory points until projectile hits ground
   while (t < maxTime) {
     const x = vx * t;
-    const y = vy * t - 0.5 * gravity * t * t;
+    const y = launchHeight + vy * t - 0.5 * gravity * t * t;
 
     points.push({ t, x, y, z: 0 });
 
