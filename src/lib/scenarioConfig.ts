@@ -43,29 +43,29 @@ export interface Scenario {
 export const SCENARIOS: Record<string, Scenario> = {
   basketball: {
     id: 'basketball',
-    name: 'Basketball Court',
-    emoji: '🏀',
-    description: 'Sink shots from various distances!',
-    longDescription: 'Practice your basketball shooting skills! Start with free throws and work your way up to half-court shots. Get bonus points for swishes!',
+    name: 'Arc Elevation Drill',
+    emoji: '',
+    description: 'Shot calibration at increasing distance intervals.',
+    longDescription: 'Evaluate arc behavior at increasing distances and launch angles. Focus on consistent release height and trajectory control.',
     environment: {
       ground: 'hardwood',
       lighting: 'indoor',
       groundColor: '#8B4513'
     },
     camera: {
-      position: [25, 8, 40],     // Lower camera, closer to player perspective
-      lookAt: [25, 10, 0],        // Looking UP at hoop height (10 feet)
+      position: [25, 8, 40],
+      lookAt: [25, 10, 0],
       fov: 55
     },
     launchPoint: {
-      height: 2.0,                // 2 meters = chest/shoulder height
-      description: 'Shooting from chest height'
+      height: 2.0,
+      description: 'Launch height: 2.0 m'
     },
     defaultPhysics: {
-      speed: 12,                  // 12 m/s = ~27 mph (realistic basketball shot)
-      angle: 50,                  // High arc for swishes
-      speedRange: [8, 20],        // Basketball throw range
-      angleRange: [30, 70]        // Realistic shooting angles
+      speed: 12,
+      angle: 50,
+      speedRange: [8, 20],
+      angleRange: [30, 70]
     },
     targets: [
       { id: 1, type: 'basketball-hoop', position: [15, 0, 0], distance: 15, label: 'Free Throw' },
@@ -80,29 +80,29 @@ export const SCENARIOS: Record<string, Scenario> = {
 
   shootingRange: {
     id: 'shootingRange',
-    name: 'Shooting Range',
-    emoji: '🔫',
-    description: 'Hit bullseyes and steel plates!',
-    longDescription: 'Test your marksmanship on paper targets and reactive steel plates. Score higher by hitting the center rings!',
+    name: 'Plate Test',
+    emoji: '',
+    description: 'Static plates. Accuracy evaluation.',
+    longDescription: 'Paper and steel plates at fixed lanes. Precision scoring across varying distances.',
     environment: {
       ground: 'concrete',
       lighting: 'outdoor',
       groundColor: '#8B7355'
     },
     camera: {
-      position: [5, 1.7, 8],      // At shooter eye level, in firing position
-      lookAt: [40, 1.5, 0],       // Looking STRAIGHT ahead at targets
+      position: [5, 1.7, 8],
+      lookAt: [40, 1.5, 0],
       fov: 50
     },
     launchPoint: {
-      height: 1.7,                // 1.7m = eye level standing
-      description: 'Firing from standing position'
+      height: 1.7,
+      description: 'Standing launch height: 1.7 m'
     },
     defaultPhysics: {
-      speed: 300,                 // 300 m/s = ~670 mph (rifle velocity)
-      angle: 2,                   // Nearly flat trajectory
-      speedRange: [100, 400],     // Various rifle speeds
-      angleRange: [0, 15]         // Flat shooting angles
+      speed: 300,
+      angle: 2,
+      speedRange: [100, 400],
+      angleRange: [0, 15]
     },
     targets: [
       { id: 1, type: 'bullseye', position: [25, 1.5, 0], distance: 25 },
@@ -119,29 +119,29 @@ export const SCENARIOS: Record<string, Scenario> = {
 
   soccer: {
     id: 'soccer',
-    name: 'Soccer Goal',
-    emoji: '⚽',
-    description: 'Score goals from different angles!',
-    longDescription: 'Become a goal-scoring legend! Aim for the corners to maximize your points. Top corners are worth the most!',
+    name: 'Low-Angle Trajectory Drill',
+    emoji: '',
+    description: 'Ground-level shots to varying goal distances.',
+    longDescription: 'Low launch height. Evaluate low-angle trajectories and range control to fixed goals.',
     environment: {
       ground: 'grass',
       lighting: 'outdoor',
       groundColor: '#2d5016'
     },
     camera: {
-      position: [15, 3, 20],      // Low behind the kicker
-      lookAt: [30, 2, 0],         // Looking at goal height from ground
+      position: [15, 3, 20],
+      lookAt: [30, 2, 0],
       fov: 60
     },
     launchPoint: {
-      height: 0.2,                // 20cm = ball on ground
-      description: 'Kicking from ground level'
+      height: 0.2,
+      description: 'Ground-level launch height: 0.2 m'
     },
     defaultPhysics: {
-      speed: 25,                  // 25 m/s = ~56 mph (strong kick)
-      angle: 15,                  // Low, driven shot
-      speedRange: [10, 35],       // Kick strength range
-      angleRange: [5, 35]         // Ground shots to chips
+      speed: 25,
+      angle: 15,
+      speedRange: [10, 35],
+      angleRange: [5, 35]
     },
     targets: [
       { id: 1, type: 'soccer-goal', position: [20, 0, 0], distance: 20 },
@@ -157,28 +157,28 @@ export const SCENARIOS: Record<string, Scenario> = {
   classic: {
     id: 'classic',
     name: 'Classic Targets',
-    emoji: '🎯',
-    description: 'Original target practice mode!',
-    longDescription: 'The original target practice experience with ring targets at various distances.',
+    emoji: '',
+    description: 'Ring targets at fixed range intervals.',
+    longDescription: 'Standard range layout for baseline trajectory testing across defined distances.',
     environment: {
       ground: 'astroturf',
       lighting: 'outdoor',
       groundColor: '#1a1a1a'
     },
     camera: {
-      position: [60, 35, 90],     // Bird's eye view (original)
+      position: [60, 35, 90],
       lookAt: [50, 0, 0],
       fov: 50
     },
     launchPoint: {
-      height: 0.5,                // Slight elevation
-      description: 'Standard launch height'
+      height: 0.5,
+      description: 'Standard launch height: 0.5 m'
     },
     defaultPhysics: {
-      speed: 30,                  // Medium speed
-      angle: 45,                  // Classic 45-degree angle
-      speedRange: [10, 100],      // Full range
-      angleRange: [5, 85]         // Full flexibility
+      speed: 30,
+      angle: 45,
+      speedRange: [10, 100],
+      angleRange: [5, 85]
     },
     targets: [
       { id: 1, type: 'ring-target', position: [30, 0, 0], distance: 30 },
@@ -201,3 +201,4 @@ export function getScenario(id: string): Scenario {
 export function getAllScenarios(): Scenario[] {
   return Object.values(SCENARIOS);
 }
+

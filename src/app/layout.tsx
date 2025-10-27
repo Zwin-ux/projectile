@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AppHeader from "@/components/AppHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,14 +16,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Parabola",
-  description: "Physics-based projectile motion simulator with realistic 3D visualization and sport-specific modes.",
+  title: "Parabola - 3D Projectile Trainer",
+  description: "Master projectile physics with precision target challenges. Train your skills across multiple difficulty stages with real-time feedback.",
   icons: {
     icon: [
-      { url: "/logo.png", sizes: "any" },
-      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/parabola-logo.png", sizes: "any" },
+      { url: "/parabola-logo.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: "/logo.png",
+    apple: "/parabola-logo.png",
   },
 };
 
@@ -34,12 +35,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/logo.png" sizes="any" />
+        <link rel="icon" href="/parabola-logo.png" sizes="any" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        {children}
+        <AppHeader />
+        <main className="min-h-[calc(100vh-64px)]">
+          {children}
+        </main>
       </body>
     </html>
   );
