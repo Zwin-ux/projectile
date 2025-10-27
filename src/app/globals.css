@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Custom slider styles */
+input[type="range"].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type="range"].slider::-webkit-slider-track {
+  background: #262626;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+input[type="range"].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  margin-top: -0.25rem;
+}
+
+input[type="range"].slider::-webkit-slider-thumb:hover {
+  background: #2563eb;
+}
+
+input[type="range"].slider::-moz-range-track {
+  background: #262626;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+input[type="range"].slider::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: none;
+}
+
+input[type="range"].slider::-moz-range-thumb:hover {
+  background: #2563eb;
+}
+
+/* Ensure canvas renders properly */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
