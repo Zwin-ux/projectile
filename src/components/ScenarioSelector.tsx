@@ -16,8 +16,8 @@ export default function ScenarioSelector({
   const scenarios = getAllScenarios();
 
   return (
-    <div className="bg-neutral-950 rounded-xl border border-neutral-800 p-6">
-      <h2 className="text-xl font-semibold text-neutral-100 mb-4">Game Mode</h2>
+    <div className="bg-gray-900/50 rounded-panel border border-primary-800/40 p-5 shadow-panel">
+      <h2 className="text-base font-bold text-gray-100 mb-3 tracking-tight">Game Mode</h2>
 
       <div className="grid grid-cols-2 gap-3">
         {scenarios.map((scenario) => (
@@ -25,23 +25,23 @@ export default function ScenarioSelector({
             key={scenario.id}
             onClick={() => onSelectScenario(scenario.id)}
             disabled={isAnimating}
-            className={`p-4 rounded-lg border-2 transition-all text-left ${
+            className={`p-3 rounded-lg border transition-all text-left ${
               currentScenario === scenario.id
-                ? 'border-blue-500 bg-blue-500/20 shadow-lg shadow-blue-500/20'
-                : 'border-neutral-700 hover:border-neutral-600 hover:bg-neutral-800/50'
+                ? 'border-accent bg-accent/10 shadow-glow-sm'
+                : 'border-gray-700 hover:border-gray-600'
             } ${isAnimating ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
           >
-            <div className="flex items-center gap-3 mb-2">
-              <span className="text-4xl">{scenario.emoji}</span>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-2xl">{scenario.emoji}</span>
               <div className="flex-1">
-                <div className="text-sm font-bold text-neutral-100">{scenario.name}</div>
+                <div className="text-xs font-bold text-gray-100">{scenario.name}</div>
               </div>
             </div>
-            <p className="text-xs text-neutral-400 leading-relaxed">{scenario.description}</p>
+            <p className="text-xs text-gray-500 leading-relaxed">{scenario.description}</p>
 
             {currentScenario === scenario.id && (
-              <div className="mt-2 pt-2 border-t border-neutral-700">
-                <p className="text-xs text-blue-400">✓ Currently Playing</p>
+              <div className="mt-2 pt-2 border-t border-gray-700/50">
+                <p className="text-xs text-accent font-medium">Active</p>
               </div>
             )}
           </button>
@@ -49,13 +49,13 @@ export default function ScenarioSelector({
       </div>
 
       {currentScenario && (
-        <div className="mt-4 p-4 bg-neutral-900 rounded-lg border border-neutral-800">
-          <h3 className="text-sm font-semibold text-neutral-100 mb-2">About This Mode</h3>
-          <p className="text-xs text-neutral-400 leading-relaxed mb-3">
+        <div className="mt-3 p-3 bg-gray-800/30 rounded-lg border border-gray-700/50">
+          <h3 className="text-xs font-semibold text-gray-100 mb-1">About This Mode</h3>
+          <p className="text-xs text-gray-400 leading-relaxed mb-2">
             {scenarios.find(s => s.id === currentScenario)?.longDescription}
           </p>
-          <div className="text-xs text-neutral-500">
-            <strong className="text-neutral-300">Scoring:</strong>{' '}
+          <div className="text-xs text-gray-500">
+            <strong className="text-gray-300">Scoring:</strong>{' '}
             {scenarios.find(s => s.id === currentScenario)?.scoringInfo}
           </div>
         </div>

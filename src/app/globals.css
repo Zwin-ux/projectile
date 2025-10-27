@@ -2,7 +2,7 @@
 
 :root {
   --background: #000000;
-  --foreground: #ededed;
+  --foreground: #e5e7eb;
 }
 
 @theme inline {
@@ -13,8 +13,9 @@
 }
 
 body {
-  background: var(--background);
+  background: #000000;
   color: var(--foreground);
+  min-height: 100vh;
 }
 
 /* Custom slider styles */
@@ -25,43 +26,54 @@ input[type="range"].slider {
 }
 
 input[type="range"].slider::-webkit-slider-track {
-  background: #262626;
-  border-radius: 0.5rem;
-  height: 0.5rem;
+  background: #1f2937;
+  border-radius: 0.375rem;
+  height: 0.375rem;
+  border: 1px solid #374151;
 }
 
 input[type="range"].slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 1rem;
-  height: 1rem;
+  width: 1.125rem;
+  height: 1.125rem;
   border-radius: 50%;
-  background: #3b82f6;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   cursor: pointer;
-  margin-top: -0.25rem;
+  margin-top: -0.375rem;
+  border: 2px solid #0a0f1e;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+  transition: all 0.15s ease;
 }
 
 input[type="range"].slider::-webkit-slider-thumb:hover {
-  background: #2563eb;
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+  transform: scale(1.1);
 }
 
 input[type="range"].slider::-moz-range-track {
-  background: #262626;
-  border-radius: 0.5rem;
-  height: 0.5rem;
+  background: #1f2937;
+  border-radius: 0.375rem;
+  height: 0.375rem;
+  border: 1px solid #374151;
 }
 
 input[type="range"].slider::-moz-range-thumb {
-  width: 1rem;
-  height: 1rem;
+  width: 1.125rem;
+  height: 1.125rem;
   border-radius: 50%;
-  background: #3b82f6;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
   cursor: pointer;
-  border: none;
+  border: 2px solid #0a0f1e;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+  transition: all 0.15s ease;
 }
 
 input[type="range"].slider::-moz-range-thumb:hover {
-  background: #2563eb;
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+  transform: scale(1.1);
 }
 
 /* Ensure canvas renders properly */

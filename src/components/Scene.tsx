@@ -306,11 +306,11 @@ export default function Scene() {
       {/* Control Panel */}
       <div className="w-full md:w-80 flex flex-col gap-6">
         {/* Game Score */}
-        <div className="bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-xl border border-yellow-500 p-6 text-center">
-          <div className="text-sm font-medium text-yellow-100 mb-1">SCORE</div>
+        <div className="bg-gradient-to-br from-primary-900 to-primary-800 rounded-panel border border-accent/30 p-5 text-center shadow-glow-sm">
+          <div className="text-xs font-semibold text-accent uppercase tracking-wide mb-1">SCORE</div>
           <div className="text-5xl font-bold text-white">{score}</div>
-          <div className="text-xs text-yellow-200 mt-2">
-            Targets Hit: {hitTargets.size} / {scenario.targets.length}
+          <div className="text-xs text-gray-400 mt-2">
+            Targets: {hitTargets.size}/{scenario.targets.length}
           </div>
         </div>
 
@@ -322,8 +322,8 @@ export default function Scene() {
         />
 
         {/* Projectile Selection */}
-        <div className="bg-neutral-950 rounded-xl border border-neutral-800 p-6">
-          <h2 className="text-xl font-semibold text-neutral-100 mb-4">Choose Projectile</h2>
+        <div className="bg-gray-900/50 rounded-panel border border-primary-800/40 p-5 shadow-panel">
+          <h2 className="text-base font-bold text-gray-100 mb-3 tracking-tight">Choose Projectile</h2>
           <div className="grid grid-cols-2 gap-3">
             {scenario.allowedProjectiles.map((type) => {
               const info = projectileInfo[type];
@@ -332,31 +332,31 @@ export default function Scene() {
                   key={type}
                   onClick={() => setProjectileType(type)}
                   disabled={isAnimating}
-                  className={`p-3 rounded-lg border-2 transition-all ${
+                  className={`p-3 rounded-lg border transition-all ${
                     projectileType === type
-                      ? 'border-blue-500 bg-blue-500/20'
-                      : 'border-neutral-700 hover:border-neutral-600'
+                      ? 'border-accent bg-accent/10 shadow-glow-sm'
+                      : 'border-gray-700 hover:border-gray-600'
                   } ${isAnimating ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
                 >
-                  <div className="text-3xl mb-1">{info.emoji}</div>
-                  <div className="text-xs font-semibold text-neutral-100">{info.name}</div>
+                  <div className="text-2xl mb-1">{info.emoji}</div>
+                  <div className="text-xs font-semibold text-gray-100">{info.name}</div>
                 </button>
               );
             })}
           </div>
-          <p className="text-xs text-neutral-500 mt-3 text-center">
+          <p className="text-xs text-gray-500 mt-3 text-center leading-relaxed">
             {projectileInfo[projectileType].description}
           </p>
         </div>
 
         {/* Physics Controls */}
-        <div className="bg-neutral-950 rounded-xl border border-neutral-800 p-6">
-          <h2 className="text-xl font-semibold text-neutral-100 mb-4">Physics Controls</h2>
+        <div className="bg-gray-900/50 rounded-panel border border-primary-800/40 p-5 shadow-panel">
+          <h2 className="text-base font-bold text-gray-100 mb-4 tracking-tight">Physics Controls</h2>
 
           {/* Speed */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
-              Speed: {speed} m/s
+            <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
+              Speed: <span className="text-accent font-mono">{speed}</span> m/s
             </label>
             <input
               type="range"
@@ -366,14 +366,14 @@ export default function Scene() {
               value={speed}
               onChange={(e) => setSpeed(Number(e.target.value))}
               disabled={isAnimating}
-              className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full slider"
             />
           </div>
 
           {/* Angle */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
-              Angle: {angle}°
+            <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
+              Angle: <span className="text-accent font-mono">{angle}</span>°
             </label>
             <input
               type="range"
@@ -383,14 +383,14 @@ export default function Scene() {
               value={angle}
               onChange={(e) => setAngle(Number(e.target.value))}
               disabled={isAnimating}
-              className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full slider"
             />
           </div>
 
           {/* Gravity */}
           <div>
-            <label className="block text-sm font-medium text-neutral-300 mb-2">
-              Gravity: {gravity.toFixed(2)} m/s²
+            <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
+              Gravity: <span className="text-accent font-mono">{gravity.toFixed(2)}</span> m/s²
             </label>
             <input
               type="range"
@@ -400,7 +400,7 @@ export default function Scene() {
               value={gravity}
               onChange={(e) => setGravity(Number(e.target.value))}
               disabled={isAnimating}
-              className="w-full h-2 bg-neutral-800 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full slider"
             />
           </div>
         </div>
@@ -409,38 +409,38 @@ export default function Scene() {
         <button
           onClick={handleFire}
           disabled={isAnimating}
-          className={`w-full py-6 rounded-xl font-bold text-2xl transition-all ${
+          className={`w-full py-5 rounded-panel font-bold text-xl transition-all tracking-tight ${
             isAnimating
-              ? 'bg-neutral-700 text-neutral-500 cursor-not-allowed'
-              : 'bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white shadow-lg hover:shadow-xl transform hover:scale-105'
+              ? 'bg-gray-800 text-gray-500 cursor-not-allowed'
+              : 'bg-gradient-to-r from-fire-600 to-fire-500 hover:from-fire-500 hover:to-fire-600 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02]'
           }`}
         >
-          {isAnimating ? '🚀 FLYING...' : '🔥 FIRE!'}
+          {isAnimating ? 'FLYING...' : 'FIRE'}
         </button>
 
         {/* Reset Button */}
         <button
           onClick={handleReset}
-          className="w-full py-3 rounded-xl font-semibold bg-neutral-800 hover:bg-neutral-700 text-neutral-100 transition-all"
+          className="w-full py-3 rounded-panel font-semibold bg-gray-800/50 hover:bg-gray-700/50 text-gray-100 transition-all border border-gray-700 text-sm"
         >
-          🔄 Reset Game
+          Reset Game
         </button>
 
         {/* Stats */}
-        <div className="bg-neutral-950 rounded-xl border border-neutral-800 p-6">
-          <h2 className="text-lg font-semibold text-neutral-100 mb-3">Trajectory Stats</h2>
+        <div className="bg-gray-900/50 rounded-panel border border-primary-800/40 p-5 shadow-panel">
+          <h2 className="text-base font-bold text-gray-100 mb-3 tracking-tight">Trajectory Stats</h2>
           <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <span className="text-neutral-400">Max Height:</span>
-              <span className="font-mono text-neutral-100">{stats.maxHeight} m</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-400 text-xs">Max Height</span>
+              <span className="font-mono text-gray-100 font-medium">{stats.maxHeight} m</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-neutral-400">Range:</span>
-              <span className="font-mono text-neutral-100">{stats.range} m</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-400 text-xs">Range</span>
+              <span className="font-mono text-gray-100 font-medium">{stats.range} m</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-neutral-400">Flight Time:</span>
-              <span className="font-mono text-neutral-100">{stats.flightTime} s</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-400 text-xs">Flight Time</span>
+              <span className="font-mono text-gray-100 font-medium">{stats.flightTime} s</span>
             </div>
           </div>
         </div>
