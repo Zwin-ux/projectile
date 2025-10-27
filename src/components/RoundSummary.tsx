@@ -1,1 +1,149 @@
-﻿甧敳挠楬湥❴਻⼊⨪ ‪潒湵卤浵慭祲䌠浯潰敮瑮 ‪潐瑳爭畯摮洠摯污眠瑩⁨瑳瑡⁳湡⁤敬摡牥潢牡⁤畳浢獩楳湯 ⼪ਊ浩潰瑲笠甠敳瑓瑡⁥⁽牦浯✠敲捡❴਻浩潰瑲笠甠敳慇敭瑓牯⁥⁽牦浯✠⽀瑳牯⽥慧敭瑓牯❥਻浩潰瑲笠朠瑥潍敤‬敧却慴敧素映潲⁭䀧氯扩术浡䍥湯楦❧਻攊灸牯⁴敤慦汵⁴畦据楴湯删畯摮畓浭牡⡹ ੻†潣獮⁴⁻楦慮卬慴獴‬畣牲湥䵴摯䥥Ɽ挠牵敲瑮瑓条䥥Ɽ爠獥瑥潒湵⁤⁽‽獵䝥浡卥潴敲⤨਻†潣獮⁴灛慬敹乲浡ⱥ猠瑥汐祡牥慎敭⁝‽獵卥慴整✨⤧਻†潣獮⁴楛即扵業瑴湩Ⱨ猠瑥獉畓浢瑩楴杮⁝‽獵卥慴整昨污敳㬩 挠湯瑳嬠畳浢瑩整Ɽ猠瑥畓浢瑩整嵤㴠甠敳瑓瑡⡥慦獬⥥਻ 椠⁦ℨ楦慮卬慴獴簠⁼挡牵敲瑮潍敤摉簠⁼挡牵敲瑮瑓条䥥⥤笠 †爠瑥牵⁮畮汬਻†੽ 挠湯瑳洠摯⁥‽敧䵴摯⡥畣牲湥䵴摯䥥⥤਻†潣獮⁴瑳条⁥‽敧却慴敧挨牵敲瑮瑓条䥥⥤਻ 椠⁦ℨ潭敤簠⁼猡慴敧 敲畴湲渠汵㭬ਊ†潣獮⁴慨摮敬畓浢瑩㴠愠祳据⠠ 㸽笠 †椠⁦ℨ汰祡牥慎敭琮楲⡭ 籼椠即扵業瑴湩⥧爠瑥牵㭮ਊ††敳䥴即扵業瑴湩⡧牴敵㬩ਊ††牴⁹੻†††潣獮⁴敲⁳‽睡楡⁴敦捴⡨⼧灡⽩敬摡牥潢牡⽤畳浢瑩Ⱗ笠 †††洠瑥潨㩤✠佐呓Ⱗ †††栠慥敤獲›⁻䌧湯整瑮吭灹❥›愧灰楬慣楴湯樯潳❮素ਬ††††潢祤›半乏献牴湩楧祦笨 ††††瀠慬敹乲浡㩥瀠慬敹乲浡⹥牴浩⤨ਬ†††††潭敤摉›畣牲湥䵴摯䥥Ɽ ††††猠慴敧摉›畣牲湥却慴敧摉ਬ†††††捳牯㩥映湩污瑓瑡⹳捳牯ⱥ ††††愠捣牵捡㩹映湩污瑓瑡⹳捡畣慲祣 †††素਩†††⥽਻ ††椠⁦爨獥漮⥫笠 †††猠瑥畓浢瑩整⡤牴敵㬩 ††素攠獬⁥੻††††潣獮汯⹥牥潲⡲䘧楡敬⁤潴猠扵業⁴捳牯❥㬩 ††素 †素挠瑡档⠠牥潲⥲笠 ††挠湯潳敬攮牲牯✨牅潲⁲畳浢瑩楴杮猠潣敲✺‬牥潲⥲਻††⁽楦慮汬⁹੻†††敳䥴即扵業瑴湩⡧慦獬⥥਻††੽†㭽ਊ†潣獮⁴慨摮敬汐祡杁楡⁮‽⤨㴠‾੻††敲敳剴畯摮⤨਻††敳却扵業瑴摥昨污敳㬩 †猠瑥汐祡牥慎敭✨⤧਻†㭽ਊ†敲畴湲⠠ †㰠楤⁶汣獡乳浡㵥昢硩摥椠獮瑥〭稠㔭‰杢戭慬正㠯‰慢正牤灯戭畬⵲浳映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整≲ਾ†††搼癩挠慬獳慎敭∽杢戭慬正㤯‰潢摲牥戠牯敤⵲⍛攱〴晡⁝潲湵敤ⵤ摭瀠㐭洠硡眭洭⁤⵷畦汬洠⵸∴ਾ††††⽻‪效摡牥⨠累 †††㰠㉨挠慬獳慎敭∽整瑸砭⁳潦瑮洭湯⁯灵数捲獡⁥牴捡楫杮眭摩獥⁴整瑸嬭ㄣ㑥愰嵦洠ⵢ′整瑸挭湥整≲ਾ†††††佒乕⁄佃偍䕌䕔 †††㰠栯㸲 †††㰠楤⁶汣獡乳浡㵥琢硥⵴桷瑩⽥〶琠硥⵴浳映湯⵴潭潮琠硥⵴散瑮牥洠ⵢ∶ਾ†††††浻摯⹥慬敢絬锠笠瑳条⹥慬敢絬 †††㰠搯癩ਾ †††笠⨯匠慴獴䜠楲⁤⼪੽††††搼癩挠慬獳慎敭∽牧摩朠楲ⵤ潣獬㈭朠灡㐭洠ⵢ∶ਾ†††††搼癩挠慬獳慎敭∽潢摲牥戠牯敤⵲⍛攱〴晡⁝杢戭慬正㐯‰潲湵敤ⵤ摭瀠㌭琠硥⵴散瑮牥㸢 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴ㅛ瀰嵸映湯⵴潭潮甠灰牥慣敳琠慲正湩ⵧ楷敤瑳琠硥⵴⍛㘰㙢㑤⁝扭ㄭ㸢捓牯㱥搯癩ਾ††††††搼癩挠慬獳慎敭∽整瑸漭慲杮ⵥ〴‰整瑸㌭汸映湯⵴潭潮㸢晻湩污瑓瑡⹳捳牯絥⼼楤㹶 ††††㰠搯癩ਾ†††††搼癩挠慬獳慎敭∽潢摲牥戠牯敤⵲⍛攱〴晡⁝杢戭慬正㐯‰潲湵敤ⵤ摭瀠㌭琠硥⵴散瑮牥㸢 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴ㅛ瀰嵸映湯⵴潭潮甠灰牥慣敳琠慲正湩ⵧ楷敤瑳琠硥⵴⍛㘰㙢㑤⁝扭ㄭ㸢捁畣慲祣⼼楤㹶 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴⍛㘰㙢㑤⁝整瑸㌭汸映湯⵴潭潮㸢晻湩污瑓瑡⹳捡畣慲祣╽⼼楤㹶 ††††㰠搯癩ਾ†††††搼癩挠慬獳慎敭∽潢摲牥戠牯敤⵲⍛攱〴晡⁝杢戭慬正㐯‰潲湵敤ⵤ摭瀠㌭琠硥⵴散瑮牥㸢 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴ㅛ瀰嵸映湯⵴潭潮甠灰牥慣敳琠慲正湩ⵧ楷敤瑳琠硥⵴⍛㘰㙢㑤⁝扭ㄭ㸢楈獴⼼楤㹶 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴桷瑩⁥整瑸㈭汸映湯⵴潭潮㸢晻湩污瑓瑡⹳楨獴㱽搯癩ਾ†††††⼼楤㹶 ††††㰠楤⁶汣獡乳浡㵥戢牯敤⁲潢摲牥嬭ㄣ㑥愰嵦戠ⵧ汢捡⽫〴爠畯摮摥洭⁤⵰″整瑸挭湥整≲ਾ††††††搼癩挠慬獳慎敭∽整瑸嬭〱硰⁝潦瑮洭湯⁯灵数捲獡⁥牴捡楫杮眭摩獥⁴整瑸嬭〣戶搶崴洠ⵢ∱匾潨獴⼼楤㹶 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴桷瑩⁥整瑸㈭汸映湯⵴潭潮㸢晻湩污瑓瑡⹳桳瑯絳⼼楤㹶 ††††㰠搯癩ਾ††††⼼楤㹶ਊ††††⽻‪慍⁸瑓敲歡⨠累 †††笠楦慮卬慴獴献牴慥⁫‾‰☦⠠ ††††㰠楤⁶汣獡乳浡㵥戢ⵧ汢捡⽫〳爠畯摮摥氭⁧⵰″扭㘭映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整⁲慧⵰∲ਾ††††††搼癩挠慬獳慎敭∽整瑸眭楨整㘯‰整瑸砭⁳潦瑮洭湯⁯灵数捲獡≥䴾硡匠牴慥㱫搯癩ਾ††††††搼癩挠慬獳慎敭∽整瑸嬭〣戶搶崴琠硥⵴汸映湯⵴潢摬㸢晻湩污瑓瑡⹳瑳敲歡㱽搯癩ਾ†††††⼼楤㹶 †††⤠੽ †††笠⨯䰠慥敤扲慯摲匠扵業獳潩⁮⼪੽††††ⅻ畳浢瑩整⁤‿ਨ†††††搼癩挠慬獳慎敭∽扭㘭㸢 †††††㰠慬敢⁬汣獡乳浡㵥戢潬正琠硥⵴桷瑩⽥〸琠硥⵴浳映湯⵴潭潮洠ⵢ∲ਾ†††††††敌摡牥潢牡⁤畓浢獩楳湯 †††††㰠氯扡汥ਾ††††††椼灮瑵 ††††††琠灹㵥琢硥≴ ††††††瘠污敵笽汰祡牥慎敭੽†††††††湯桃湡敧笽攨 㸽猠瑥汐祡牥慎敭攨琮牡敧⹴慶畬⥥੽†††††††汰捡桥汯敤㵲䔢瑮牥礠畯⁲慮敭ਢ†††††††慭䱸湥瑧㵨㉻細 ††††††挠慬獳慎敭∽⵷畦汬戠ⵧ汢捡⽫〴戠牯敤⁲潢摲牥嬭ㄣ㑥愰嵦爠畯摮摥瀠⵸″祰㈭琠硥⵴桷瑩⁥汰捡桥汯敤⵲桷瑩⽥〴映捯獵漺瑵楬敮渭湯⁥潦畣㩳潢摲牥嬭〣戶搶崴ਢ††††††㸯 †††††㰠畢瑴湯 ††††††漠䍮楬正笽慨摮敬畓浢瑩੽†††††††楤慳汢摥笽瀡慬敹乲浡⹥牴浩⤨簠⁼獩畓浢瑩楴杮੽†††††††汣獡乳浡㵥眢昭汵⁬瑭㌭瀠⵸″祰㈭琠硥⵴獸映湯⵴潭潮戠牯敤⁲潢摲牥嬭〣戶搶崴琠硥⵴⍛㘰㙢㑤⁝潨敶㩲杢嬭〣戶搶崴ㄯ‰楤慳汢摥漺慰楣祴㔭∰ †††††㸠 ††††††笠獩畓浢瑩楴杮㼠✠⁛啓䵂呉䥔䝎崠‧›嬧匠䉕䥍⁔❝੽††††††⼼畢瑴湯ਾ†††††⼼楤㹶 †††⤠㨠⠠ ††††㰠楤⁶汣獡乳浡㵥洢ⵢ‶潢摲牥戠牯敤⵲⍛攱〴晡⁝杢戭慬正㐯‰潲湵敤ⵤ摭瀠㌭琠硥⵴散瑮牥㸢 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴⍛㘰㙢㑤⁝潦瑮洭湯⁯扭ㄭ㸢捓牯⁥畓浢瑩整Ⅴ⼼楤㹶 †††††㰠楤⁶汣獡乳浡㵥琢硥⵴桷瑩⽥〶琠硥⵴浳㸢桃捥⁫桴⁥敬摡牥潢牡⁤潴猠敥礠畯⁲慲歮⼼楤㹶 ††††㰠搯癩ਾ††††紩ਊ††††⽻‪捁楴湯⁳⼪੽††††戼瑵潴੮†††††湯汃捩㵫桻湡汤健慬䅹慧湩੽†††††汣獡乳浡㵥眢昭汵⁬硰㌭瀠⵹′整瑸砭⁳潦瑮洭湯⁯潢摲牥戠牯敤⵲⍛攱〴晡⁝整瑸札慲⵹〲‰潨敶㩲杢眭楨整㔯ਢ††††嬾删ⵅ啒⁎㱝戯瑵潴㹮 ††㰠搯癩ਾ††⼼楤㹶 ⤠਻੽਍
+'use client';
+
+/**
+ * RoundSummary Component
+ * Post-round modal with stats and leaderboard submission
+ */
+
+import { useState } from 'react';
+import { useGameStore } from '@/store/gameStore';
+import { getMode, getStage } from '@/lib/gameConfig';
+
+export default function RoundSummary() {
+  const { finalStats, currentModeId, currentStageId, resetRound } = useGameStore();
+  const [playerName, setPlayerName] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  if (!finalStats || !currentModeId || !currentStageId) {
+    return null;
+  }
+
+  const mode = getMode(currentModeId);
+  const stage = getStage(currentStageId);
+
+  if (!mode || !stage) return null;
+
+  const handleSubmit = async () => {
+    if (!playerName.trim() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/leaderboard/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          playerName: playerName.trim(),
+          modeId: currentModeId,
+          stageId: currentStageId,
+          score: finalStats.score,
+          accuracy: finalStats.accuracy
+        })
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        console.error('Failed to submit score');
+      }
+    } catch (error) {
+      console.error('Error submitting score:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+      <div className="bg-black border-2 border-[#1e40af] rounded-md max-w-md w-full p-6">
+        <h2 className="text-2xl font-bold text-white mb-1 uppercase tracking-wide">
+          ROUND COMPLETE
+        </h2>
+        <p className="text-sm text-gray-400 mb-6">
+          {mode.label} - {stage.label}
+        </p>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          <div className="bg-black/40 border border-[#1e40af] rounded-md p-3">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#06b6d4] mb-1">
+              SCORE
+            </div>
+            <div className="text-3xl font-mono text-white font-bold">
+              {finalStats.score}
+            </div>
+          </div>
+
+          <div className="bg-black/40 border border-[#1e40af] rounded-md p-3">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#06b6d4] mb-1">
+              ACCURACY
+            </div>
+            <div className="text-3xl font-mono text-white font-bold">
+              {finalStats.accuracy}%
+            </div>
+          </div>
+
+          <div className="bg-black/40 border border-[#1e40af] rounded-md p-3">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#06b6d4] mb-1">
+              HITS
+            </div>
+            <div className="text-3xl font-mono text-white font-bold">
+              {finalStats.hits}
+            </div>
+          </div>
+
+          <div className="bg-black/40 border border-[#1e40af] rounded-md p-3">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#06b6d4] mb-1">
+              SHOTS
+            </div>
+            <div className="text-3xl font-mono text-white font-bold">
+              {finalStats.shots}
+            </div>
+          </div>
+        </div>
+
+        {/* Leaderboard Submission */}
+        {!submitted ? (
+          <div className="mb-6">
+            <label className="block text-xs font-mono uppercase tracking-widest text-[#06b6d4] mb-2">
+              SUBMIT TO LEADERBOARD
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
+                placeholder="Enter name"
+                maxLength={20}
+                className="flex-1 px-3 py-2 bg-black border border-[#1e40af] text-white text-sm font-mono focus:outline-none focus:border-[#06b6d4]"
+              />
+              <button
+                onClick={handleSubmit}
+                disabled={!playerName.trim() || isSubmitting}
+                className="px-4 py-2 text-xs font-mono border border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4]/10 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? '...' : '[ SUBMIT ]'}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="mb-6 p-3 bg-[#06b6d4]/10 border border-[#06b6d4] rounded-md">
+            <p className="text-sm font-mono text-[#06b6d4]">
+              Score submitted successfully
+            </p>
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="flex gap-2">
+          <button
+            onClick={resetRound}
+            className="flex-1 px-4 py-3 text-sm font-mono border border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4]/10"
+          >
+            [ CONTINUE ]
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
