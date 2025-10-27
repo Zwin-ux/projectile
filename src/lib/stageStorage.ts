@@ -6,6 +6,9 @@
 import type { CustomStage, StageLibraryEntry } from '@/types/customStage';
 import { DEFAULT_CUSTOM_STAGE } from '@/types/customStage';
 
+// Re-export types for convenience
+export type { StageLibraryEntry };
+
 const STORAGE_KEY = 'parabola_custom_stages';
 const FEATURED_STAGES_KEY = 'parabola_featured_stages';
 
