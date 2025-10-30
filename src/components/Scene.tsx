@@ -1,12 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Projectile, { type ProjectileType } from "./Projectile";
 import { generateTrajectory, flightStats, type TrajectoryPoint } from "@/lib/physics";
 import ScenarioSelector from "./ScenarioSelector";
 import { getScenario, DEFAULT_SCENARIO } from "@/lib/scenarioConfig";
+import { checkSegmentHits } from "@/lib/hitDetection";
+import { useGameStore } from "@/store/gameStore";
+import { ParticleEffect, HitMarker, RingEffect } from "./HitEffects";
+import { useScreenShake } from "@/hooks/useScreenShake";
+import type { TargetSpec } from "@/lib/gameConfig";
 
 export default function Scene() {
   const [currentScenarioId, setCurrentScenarioId] = useState(DEFAULT_SCENARIO);
@@ -18,6 +23,10 @@ export default function Scene() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [trajectory, setTrajectory] = useState<TrajectoryPoint[]>([]);
   const [projectileType, setProjectileType] = useState<ProjectileType>(scenario.recommendedProjectile);
+  const [hitEffects, setHitEffects] = useState<Array<{ id: string; position: [number, number, number]; points: number; timestamp: number }>>([]);
+  const [hitTargets, setHitTargets] = useState<Set<string>>(new Set());
+
+  const { registerHit, score } = useGameStore();
 
   const resetToDefaults = () => {
     setSpeed(scenario.defaultPhysics.speed);
@@ -33,13 +42,50 @@ export default function Scene() {
     );
     setTrajectory(points);
     setIsAnimating(true);
+    setHitTargets(new Set()); // Reset hit targets for new shot
   };
+
+  // Convert scenario targets to TargetSpec format for hit detection
+  const targetSpecs: TargetSpec[] = useMemo(() => {
+    return scenario.targets.map(t => ({
+      id: t.id.toString(),
+      position: t.position,
+      radius: 1.0, // Default radius for scenario targets
+      points: 100 // Default points
+    }));
+  }, [scenario.targets]);
+
+  const handleCheckHit = useCallback((prevPos: [number, number, number], currPos: [number, number, number]) => {
+    const hits = checkSegmentHits(prevPos, currPos, targetSpecs);
+    
+    hits.forEach(hit => {
+      // Only register each target once per shot
+      if (!hitTargets.has(hit.targetId)) {
+        setHitTargets(prev => new Set(prev).add(hit.targetId));
+        registerHit(hit.targetId, hit.points);
+        
+        // Add visual effects
+        const hitEffect = {
+          id: `${hit.targetId}-${Date.now()}`,
+          position: currPos,
+          points: hit.points,
+          timestamp: Date.now()
+        };
+        setHitEffects(prev => [...prev, hitEffect]);
+      }
+    });
+  }, [targetSpecs, hitTargets, registerHit]);
+
+  const removeHitEffect = useCallback((id: string) => {
+    setHitEffects(prev => prev.filter(effect => effect.id !== id));
+  }, []);
 
   return (
     <div className="flex flex-col gap-6 md:flex-row w-full h-full">
       {/* Viewport */}
       <div className="flex-1 min-h-[400px] md:min-h-[520px] rounded-md border border-[#1e40af] overflow-hidden">
         <Canvas camera={{ position: scenario.camera.position as any, fov: scenario.camera.fov }}>
+          <ScreenShakeWrapper />
           <color attach="background" args={["#000000"]} />
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -66,8 +112,29 @@ export default function Scene() {
               projectileType={projectileType}
               onComplete={() => setIsAnimating(false)}
               onPositionUpdate={() => {}}
+              onCheckHit={handleCheckHit}
             />
           )}
+
+          {/* Hit Effects */}
+          {hitEffects.map(effect => (
+            <group key={effect.id}>
+              <ParticleEffect
+                position={effect.position}
+                color="#06b6d4"
+                particleCount={15}
+                onComplete={() => removeHitEffect(effect.id)}
+              />
+              <HitMarker
+                position={effect.position}
+                points={effect.points}
+              />
+              <RingEffect
+                position={effect.position}
+                color="#ffd700"
+              />
+            </group>
+          ))}
 
           <OrbitControls enableDamping dampingFactor={0.05} />
         </Canvas>
@@ -78,7 +145,7 @@ export default function Scene() {
         {/* Score */}
         <div className="border border-[#1e40af] bg-black/40 rounded-md p-4 text-center">
           <div className="text-[10px] font-mono uppercase tracking-widest text-[#06b6d4] mb-1">Score</div>
-          <div className="text-4xl font-mono text-white">0</div>
+          <div className="text-4xl font-mono text-white">{score}</div>
           <div className="text-[11px] text-gray-400 mt-1">Session total</div>
         </div>
 
@@ -223,12 +290,18 @@ export default function Scene() {
   );
 }
 
+/**
+ * Wrapper component to provide screen shake functionality
+ */
+function ScreenShakeWrapper() {
+  const { triggerShake } = useScreenShake();
+  const { score } = useGameStore();
+  const prevScoreRef = useState(score)[0];
 
+  // Trigger shake when score changes
+  if (score !== prevScoreRef) {
+    triggerShake({ intensity: 0.5, duration: 0.2 });
+  }
 
-
-
-
-
-
-
-
+  return null;
+}

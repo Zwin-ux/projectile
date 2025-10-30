@@ -14,12 +14,14 @@ interface CustomTargetMeshProps {
   target: CustomTarget;
   isHit: boolean;
   scoreData?: { zone: string; points: number };
+  onPositionUpdate?: (targetId: string, position: [number, number, number]) => void;
 }
 
-export default function CustomTargetMesh({ target, isHit, scoreData }: CustomTargetMeshProps) {
+export default function CustomTargetMesh({ target, isHit, scoreData, onPositionUpdate }: CustomTargetMeshProps) {
   const groupRef = useRef<THREE.Group>(null);
   const meshRef = useRef<THREE.Mesh>(null);
   const timeRef = useRef(0);
+  const currentPositionRef = useRef<[number, number, number]>(target.position);
 
   // Calculate animated position based on behavior
   const animatedPosition = useMemo(() => {
@@ -68,8 +70,21 @@ export default function CustomTargetMesh({ target, isHit, scoreData }: CustomTar
 
       case 'static':
       default:
-        // No animation
+        // No animation - keep initial position
+        groupRef.current.position.set(...target.position);
         break;
+    }
+
+    // Update current position ref and notify parent
+    const currentPos: [number, number, number] = [
+      groupRef.current.position.x,
+      groupRef.current.position.y,
+      groupRef.current.position.z,
+    ];
+    currentPositionRef.current = currentPos;
+
+    if (onPositionUpdate) {
+      onPositionUpdate(target.id, currentPos);
     }
 
     // Pulse effect when hit

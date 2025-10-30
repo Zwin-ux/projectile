@@ -4,9 +4,17 @@
  */
 
 import type { TargetSpec } from './gameConfig';
+import type { CustomTarget } from '@/types/customStage';
 
 export interface HitResult {
   targetId: string;
+  points: number;
+}
+
+export interface DynamicTarget {
+  id: string;
+  position: [number, number, number];
+  radius: number;
   points: number;
 }
 
@@ -83,6 +91,56 @@ function segmentIntersectsSphere(
   const hit = (t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1) || (t1 < 0 && t2 > 1);
 
   return hit;
+}
+
+/**
+ * Check segment hits with dynamic target positions (for animated targets)
+ * @param prevPos Previous position of projectile
+ * @param currPos Current position of projectile
+ * @param targets Array of targets with dynamic positions
+ * @param positionMap Optional map of target IDs to current animated positions
+ * @returns Array of hit results
+ */
+export function checkSegmentHitsWithDynamicPositions(
+  prevPos: [number, number, number],
+  currPos: [number, number, number],
+  targets: DynamicTarget[],
+  positionMap?: Map<string, [number, number, number]>
+): HitResult[] {
+  const hits: HitResult[] = [];
+
+  for (const target of targets) {
+    // Use animated position if available, otherwise use base position
+    const targetPos = positionMap?.get(target.id) || target.position;
+
+    if (segmentIntersectsSphere(prevPos, currPos, targetPos, target.radius)) {
+      hits.push({
+        targetId: target.id,
+        points: target.points
+      });
+    }
+  }
+
+  return hits;
+}
+
+/**
+ * Check if custom targets are hit, using their current animated positions
+ */
+export function checkCustomTargetHits(
+  prevPos: [number, number, number],
+  currPos: [number, number, number],
+  targets: CustomTarget[],
+  positionMap: Map<string, [number, number, number]>
+): HitResult[] {
+  const dynamicTargets: DynamicTarget[] = targets.map(t => ({
+    id: t.id,
+    position: t.position,
+    radius: t.radius,
+    points: t.points
+  }));
+
+  return checkSegmentHitsWithDynamicPositions(prevPos, currPos, dynamicTargets, positionMap);
 }
 
 /**

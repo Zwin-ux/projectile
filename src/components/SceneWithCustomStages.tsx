@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { generateTrajectory, flightStats, type TrajectoryPoint } from "@/lib/physics";
 import Projectile, { type ProjectileType } from "./Projectile";
 import type { CustomStage } from "@/types/customStage";
 import OfficialScene from "./Scene";
+import { checkCustomTargetHits } from "@/lib/hitDetection";
+import { useGameStore } from "@/store/gameStore";
+import { ParticleEffect, HitMarker, RingEffect } from "./HitEffects";
+import { useScreenShake } from "@/hooks/useScreenShake";
 
 interface SceneProps {
   customStage?: CustomStage | null;
@@ -20,6 +24,10 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [trajectory, setTrajectory] = useState<TrajectoryPoint[]>([]);
   const [projectileType, setProjectileType] = useState<ProjectileType>(customStage?.recommendedProjectile ?? 'basketball');
+  const [hitEffects, setHitEffects] = useState<Array<{ id: string; position: [number, number, number]; points: number; timestamp: number }>>([]);
+  const [hitTargets, setHitTargets] = useState<Set<string>>(new Set());
+
+  const { registerHit, score } = useGameStore();
   
   if (!customStage) return <OfficialScene />;
 
@@ -32,7 +40,42 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
     );
     setTrajectory(points);
     setIsAnimating(true);
+    setHitTargets(new Set()); // Reset hit targets for new shot
   };
+
+  // Create position map for custom targets (static positions for now)
+  const targetPositionMap = useMemo(() => {
+    const map = new Map<string, [number, number, number]>();
+    customStage.targets.forEach(t => {
+      map.set(t.id, t.position);
+    });
+    return map;
+  }, [customStage.targets]);
+
+  const handleCheckHit = useCallback((prevPos: [number, number, number], currPos: [number, number, number]) => {
+    const hits = checkCustomTargetHits(prevPos, currPos, customStage.targets, targetPositionMap);
+    
+    hits.forEach(hit => {
+      // Only register each target once per shot
+      if (!hitTargets.has(hit.targetId)) {
+        setHitTargets(prev => new Set(prev).add(hit.targetId));
+        registerHit(hit.targetId, hit.points);
+        
+        // Add visual effects
+        const hitEffect = {
+          id: `${hit.targetId}-${Date.now()}`,
+          position: currPos,
+          points: hit.points,
+          timestamp: Date.now()
+        };
+        setHitEffects(prev => [...prev, hitEffect]);
+      }
+    });
+  }, [customStage.targets, targetPositionMap, hitTargets, registerHit]);
+
+  const removeHitEffect = useCallback((id: string) => {
+    setHitEffects(prev => prev.filter(effect => effect.id !== id));
+  }, []);
   const reset = () => {
     setSpeed(customStage.defaultPhysics.speed);
     setAngle(customStage.defaultPhysics.angle);
@@ -45,6 +88,7 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
       {/* Viewport */}
       <div className="flex-1 min-h-[400px] md:min-h-[520px] rounded-md border border-[#1e40af] overflow-hidden">
         <Canvas camera={{ position: customStage.camera.position as any, fov: customStage.camera.fov }}>
+          <ScreenShakeWrapper />
           <color attach="background" args={["#000000"]} />
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -71,8 +115,29 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
               projectileType={projectileType}
               onComplete={() => setIsAnimating(false)}
               onPositionUpdate={() => {}}
+              onCheckHit={handleCheckHit}
             />
           )}
+
+          {/* Hit Effects */}
+          {hitEffects.map(effect => (
+            <group key={effect.id}>
+              <ParticleEffect
+                position={effect.position}
+                color="#06b6d4"
+                particleCount={15}
+                onComplete={() => removeHitEffect(effect.id)}
+              />
+              <HitMarker
+                position={effect.position}
+                points={effect.points}
+              />
+              <RingEffect
+                position={effect.position}
+                color="#ffd700"
+              />
+            </group>
+          ))}
 
           <OrbitControls enableDamping dampingFactor={0.05} />
         </Canvas>
@@ -80,6 +145,13 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
 
       {/* Control Panel */}
       <div className="w-full md:w-80 flex flex-col gap-4">
+        {/* Score */}
+        <div className="border border-[#1e40af] bg-black/40 rounded-md p-4 text-center">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-[#06b6d4] mb-1">Score</div>
+          <div className="text-4xl font-mono text-white">{score}</div>
+          <div className="text-[11px] text-gray-400 mt-1">Session total</div>
+        </div>
+
         <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
           <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Physics</h3>
           <div className="mb-2">
@@ -192,9 +264,18 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
   );
 }
 
+/**
+ * Wrapper component to provide screen shake functionality
+ */
+function ScreenShakeWrapper() {
+  const { triggerShake } = useScreenShake();
+  const { score } = useGameStore();
+  const prevScoreRef = useState(score)[0];
 
+  // Trigger shake when score changes
+  if (score !== prevScoreRef) {
+    triggerShake({ intensity: 0.5, duration: 0.2 });
+  }
 
-
-
-
-
+  return null;
+}

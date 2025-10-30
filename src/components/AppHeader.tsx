@@ -3,7 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function AppHeader() {
+interface AppHeaderProps {
+  onOpenTutorial?: () => void;
+}
+
+export default function AppHeader({ onOpenTutorial }: AppHeaderProps = {}) {
   return (
     <header className="sticky top-0 z-50 bg-[#0a0a0a] border-b border-[#1e40af]">
       <div className="mx-auto max-w-7xl px-3 sm:px-4">
@@ -29,6 +33,15 @@ export default function AppHeader() {
             <HeaderLink href="/stages">Stages</HeaderLink>
             <HeaderLink href="/leaderboard">Leaderboard</HeaderLink>
             <HeaderLink href="/theory">Theory</HeaderLink>
+            {onOpenTutorial && (
+              <button
+                onClick={onOpenTutorial}
+                className="text-[#06b6d4] text-sm font-mono border border-[#06b6d4] px-2 py-1 rounded hover:bg-[#06b6d4]/10 transition-colors"
+                title="Open Tutorial"
+              >
+                [ ? HELP ]
+              </button>
+            )}
           </nav>
         </div>
       </div>

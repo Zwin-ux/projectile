@@ -14,6 +14,7 @@ interface ProjectileProps {
   projectileType: ProjectileType;
   onComplete: () => void;
   onPositionUpdate: (point: TrajectoryPoint) => void;
+  onCheckHit?: (prevPos: [number, number, number], currPos: [number, number, number]) => void;
 }
 
 export default function Projectile({
@@ -21,10 +22,12 @@ export default function Projectile({
   isAnimating,
   projectileType,
   onComplete,
-  onPositionUpdate
+  onPositionUpdate,
+  onCheckHit
 }: ProjectileProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const currentIndexRef = useRef(0);
+  const previousPositionRef = useRef<[number, number, number]>([0, 0, 0]);
 
   useFrame(() => {
     if (!isAnimating || !meshRef.current || trajectoryPoints.length === 0) return;
@@ -41,7 +44,16 @@ export default function Projectile({
     }
 
     const point = trajectoryPoints[currentIndexRef.current];
+    const currentPos: [number, number, number] = [point.x, point.y, point.z];
+
+    // Check for hits between previous and current position
+    if (onCheckHit && currentIndexRef.current > 0) {
+      onCheckHit(previousPositionRef.current, currentPos);
+    }
+
+    // Update position
     meshRef.current.position.set(point.x, point.y, point.z);
+    previousPositionRef.current = currentPos;
     onPositionUpdate(point);
 
     // Add rotation for visual effect
@@ -54,9 +66,13 @@ export default function Projectile({
     }
   });
 
-  // Reset index when animation starts
+  // Reset index and position when animation starts
   if (isAnimating && currentIndexRef.current >= trajectoryPoints.length - 1) {
     currentIndexRef.current = 0;
+    if (trajectoryPoints.length > 0) {
+      const startPoint = trajectoryPoints[0];
+      previousPositionRef.current = [startPoint.x, startPoint.y, startPoint.z];
+    }
   }
 
   const { geometry, material, scale } = getProjectileAppearance(projectileType);
