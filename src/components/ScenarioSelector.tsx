@@ -5,12 +5,14 @@ import { getAllScenarios } from "@/lib/scenarioConfig";
 interface ScenarioSelectorProps {
   currentScenario: string;
   onSelectScenario: (scenarioId: string) => void;
+  onImportScenario?: (jsonContent: string) => void;
   isAnimating?: boolean;
 }
 
 export default function ScenarioSelector({
   currentScenario,
   onSelectScenario,
+  onImportScenario,
   isAnimating = false,
 }: ScenarioSelectorProps) {
   const scenarios = getAllScenarios();
@@ -25,11 +27,10 @@ export default function ScenarioSelector({
             key={scenario.id}
             onClick={() => onSelectScenario(scenario.id)}
             disabled={isAnimating}
-            className={`p-3 rounded-md border text-left transition-colors ${
-              currentScenario === scenario.id
-                ? "border-[#06b6d4] bg-[#06b6d4]/10"
-                : "border-[#1e40af] hover:bg-white/5"
-            } ${isAnimating ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+            className={`p-3 rounded-md border text-left transition-colors ${currentScenario === scenario.id
+              ? "border-[#06b6d4] bg-[#06b6d4]/10"
+              : "border-[#1e40af] hover:bg-white/5"
+              } ${isAnimating ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
           >
             <div className="flex items-center gap-2 mb-1">
               <span className="h-2 w-2 bg-[#06b6d4] inline-block" />
@@ -59,6 +60,31 @@ export default function ScenarioSelector({
           </div>
         </div>
       )}
+
+      {/* Import Button */}
+      <div className="mt-3 pt-3 border-t border-[#1e40af]">
+        <label className="flex items-center justify-center w-full p-2 text-xs font-mono border border-[#1e40af] border-dashed rounded-md text-gray-400 hover:text-[#06b6d4] hover:border-[#06b6d4] cursor-pointer transition-colors">
+          <span>[ IMPORT SCENARIO ]</span>
+          <input
+            type="file"
+            accept=".json"
+            className="hidden"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file && onImportScenario) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                  const content = ev.target?.result as string;
+                  onImportScenario(content);
+                };
+                reader.readAsText(file);
+              }
+              // Reset input
+              e.target.value = '';
+            }}
+          />
+        </label>
+      </div>
     </div>
   );
 }

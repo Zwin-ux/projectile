@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Trail } from '@react-three/drei';
 import * as THREE from 'three';
-import { TrajectoryPoint } from '@/lib/physics';
+import { TrajectoryPoint } from '@/lib/simulation/types';
 
 export type ProjectileType = 'basketball' | 'cannonball' | 'bullet' | 'airplane' | 'soccerball';
 
@@ -44,7 +44,7 @@ export default function Projectile({
     }
 
     const point = trajectoryPoints[currentIndexRef.current];
-    const currentPos: [number, number, number] = [point.x, point.y, point.z];
+    const currentPos: [number, number, number] = [point.position.x, point.position.y, point.position.z];
 
     // Check for hits between previous and current position
     if (onCheckHit && currentIndexRef.current > 0) {
@@ -52,7 +52,7 @@ export default function Projectile({
     }
 
     // Update position
-    meshRef.current.position.set(point.x, point.y, point.z);
+    meshRef.current.position.set(point.position.x, point.position.y, point.position.z);
     previousPositionRef.current = currentPos;
     onPositionUpdate(point);
 
@@ -71,7 +71,7 @@ export default function Projectile({
     currentIndexRef.current = 0;
     if (trajectoryPoints.length > 0) {
       const startPoint = trajectoryPoints[0];
-      previousPositionRef.current = [startPoint.x, startPoint.y, startPoint.z];
+      previousPositionRef.current = [startPoint.position.x, startPoint.position.y, startPoint.position.z];
     }
   }
 
@@ -93,6 +93,8 @@ export default function Projectile({
     </group>
   );
 }
+
+export const ProjectileMemo = React.memo(Projectile);
 
 function getProjectileAppearance(type: ProjectileType) {
   switch (type) {

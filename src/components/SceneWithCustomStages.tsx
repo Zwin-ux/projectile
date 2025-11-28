@@ -3,7 +3,8 @@
 import { useState, useMemo, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { generateTrajectory, flightStats, type TrajectoryPoint } from "@/lib/physics";
+import { solveShot } from "@/lib/simulation/solver";
+import { TrajectoryPoint, SimulationResult } from "@/lib/simulation/types";
 import Projectile, { type ProjectileType } from "./Projectile";
 import type { CustomStage } from "@/types/customStage";
 import OfficialScene from "./Scene";
@@ -23,24 +24,71 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
   const [gravity, setGravity] = useState(customStage?.environment.customGravity ?? 9.81);
   const [isAnimating, setIsAnimating] = useState(false);
   const [trajectory, setTrajectory] = useState<TrajectoryPoint[]>([]);
+  const [lastResult, setLastResult] = useState<SimulationResult | null>(null);
   const [projectileType, setProjectileType] = useState<ProjectileType>(customStage?.recommendedProjectile ?? 'basketball');
   const [hitEffects, setHitEffects] = useState<Array<{ id: string; position: [number, number, number]; points: number; timestamp: number }>>([]);
   const [hitTargets, setHitTargets] = useState<Set<string>>(new Set());
 
-  const { registerHit, score } = useGameStore();
-  
+  const { registerHit, registerShot, score } = useGameStore();
+
   if (!customStage) return <OfficialScene />;
 
   const handleFire = () => {
-    const points = generateTrajectory(
-      { speed, angleDeg: angle, gravity },
-      0.02,
-      100,
-      customStage.launchPoint.height
-    );
-    setTrajectory(points);
+    const result = solveShot({
+      gravity: { x: 0, y: -gravity, z: 0 },
+      wind: { x: 0, y: 0, z: 0 },
+      dragCoefficient: 0.47,
+      airDensity: 1.225,
+      projectileArea: 0.01,
+      projectileMass: 0.6,
+      initialPosition: { x: 0, y: customStage.launchPoint.height, z: 0 },
+      initialVelocity: {
+        x: speed * Math.cos(angle * Math.PI / 180),
+        y: speed * Math.sin(angle * Math.PI / 180),
+        z: 0
+      },
+      timeStep: 0.01,
+      maxTime: 100
+    });
+
+    setTrajectory(result.trajectory);
+    setLastResult(result);
     setIsAnimating(true);
     setHitTargets(new Set()); // Reset hit targets for new shot
+
+    // Register shot with telemetry
+    const shotRecord = {
+      id: crypto.randomUUID(),
+      timestamp: Date.now(),
+      modeId: 'custom',
+      stageId: customStage.id,
+      params: {
+        gravity: { x: 0, y: -gravity, z: 0 },
+        wind: { x: 0, y: 0, z: 0 },
+        dragCoefficient: 0.47,
+        airDensity: 1.225,
+        projectileArea: 0.01,
+        projectileMass: 0.6,
+        initialPosition: { x: 0, y: customStage.launchPoint.height, z: 0 },
+        initialVelocity: {
+          x: speed * Math.cos(angle * Math.PI / 180),
+          y: speed * Math.sin(angle * Math.PI / 180),
+          z: 0
+        },
+        timeStep: 0.01,
+        maxTime: 100
+      },
+      result: result,
+      maxHeight: result.apex.position.y,
+      range: result.impact.position.x,
+      flightTime: result.impact.time,
+      impactSpeed: Math.sqrt(result.impact.velocity.x ** 2 + result.impact.velocity.y ** 2 + result.impact.velocity.z ** 2),
+      impactAngle: result.impact.angle,
+      hit: false,
+      score: 0
+    };
+
+    (registerShot as any)(shotRecord);
   };
 
   // Create position map for custom targets (static positions for now)
@@ -54,13 +102,13 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
 
   const handleCheckHit = useCallback((prevPos: [number, number, number], currPos: [number, number, number]) => {
     const hits = checkCustomTargetHits(prevPos, currPos, customStage.targets, targetPositionMap);
-    
+
     hits.forEach(hit => {
       // Only register each target once per shot
       if (!hitTargets.has(hit.targetId)) {
         setHitTargets(prev => new Set(prev).add(hit.targetId));
         registerHit(hit.targetId, hit.points);
-        
+
         // Add visual effects
         const hitEffect = {
           id: `${hit.targetId}-${Date.now()}`,
@@ -114,7 +162,7 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
               isAnimating={isAnimating}
               projectileType={projectileType}
               onComplete={() => setIsAnimating(false)}
-              onPositionUpdate={() => {}}
+              onPositionUpdate={() => { }}
               onCheckHit={handleCheckHit}
             />
           )}
@@ -211,9 +259,8 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
                 key={p}
                 onClick={() => setProjectileType(p)}
                 disabled={isAnimating}
-                className={`p-2 text-xs font-mono border rounded-md text-left ${
-                  projectileType === p ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10' : 'border-[#1e40af] text-gray-200 hover:bg-white/5'
-                } ${isAnimating ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`p-2 text-xs font-mono border rounded-md text-left ${projectileType === p ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10' : 'border-[#1e40af] text-gray-200 hover:bg-white/5'
+                  } ${isAnimating ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {p.toUpperCase()}
               </button>
@@ -223,9 +270,8 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
           <button
             onClick={handleFire}
             disabled={isAnimating}
-            className={`flex-1 px-3 py-3 text-sm font-mono border ${
-              isAnimating ? 'border-[#1e40af] text-gray-500 cursor-not-allowed' : 'border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4]/10'
-            }`}
+            className={`flex-1 px-3 py-3 text-sm font-mono border ${isAnimating ? 'border-[#1e40af] text-gray-500 cursor-not-allowed' : 'border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4]/10'
+              }`}
           >
             [ FIRE ]
           </button>
@@ -240,20 +286,20 @@ export default function SceneWithCustomStages({ customStage }: SceneProps) {
         <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
           <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Trajectory Stats</h3>
           {(() => {
-  const s = flightStats(trajectory);
+            if (!lastResult) return <div className="text-gray-500 text-xs">No shot data</div>;
             return (
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 text-xs">Max Height</span>
-                  <span className="font-mono text-gray-100 font-medium">{s.maxHeight} m</span>
+                  <span className="font-mono text-gray-100 font-medium">{lastResult.apex.position.y.toFixed(2)} m</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 text-xs">Range</span>
-                  <span className="font-mono text-gray-100 font-medium">{s.range} m</span>
+                  <span className="font-mono text-gray-100 font-medium">{lastResult.impact.position.x.toFixed(2)} m</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400 text-xs">Flight Time</span>
-                  <span className="font-mono text-gray-100 font-medium">{s.flightTime} s</span>
+                  <span className="font-mono text-gray-100 font-medium">{lastResult.impact.time.toFixed(2)} s</span>
                 </div>
               </div>
             );

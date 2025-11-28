@@ -5,6 +5,8 @@
 
 import { create } from 'zustand';
 import type { GameModeId, StageId } from '@/lib/gameConfig';
+import { ShotRecord } from '@/lib/telemetry/types';
+import { useTelemetryStore } from '@/lib/telemetry/store';
 
 export interface Hit {
   targetId: string;
@@ -79,17 +81,22 @@ export const useGameStore = create<GameState>((set, get) => ({
     });
   },
 
-  registerShot: () => {
+  registerShot: (shot?: ShotRecord) => {
     const state = get();
     if (!state.isRoundActive) return;
 
     const newShotCount = state.shotCount + 1;
     const newTotalFired = state.totalShotsFired + 1;
 
+    // Update telemetry if shot record is provided
+    if (shot) {
+      useTelemetryStore.getState().addShot(shot);
+    }
+
     set({
       shotCount: newShotCount,
       totalShotsFired: newTotalFired,
-      currentStreak: 0 // Miss breaks streak
+      currentStreak: 0 // Miss breaks streak (will be updated if hit)
     });
 
     // Auto-end PRECISION mode when shots depleted

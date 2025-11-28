@@ -18,6 +18,7 @@ export interface Scenario {
     ground: 'grass' | 'hardwood' | 'concrete' | 'indoor' | 'astroturf';
     lighting: 'outdoor' | 'indoor' | 'stadium';
     groundColor: string;
+    gravity?: number;
   };
   camera: {
     position: [number, number, number];
@@ -200,5 +201,9 @@ export function getScenario(id: string): Scenario {
 
 export function getAllScenarios(): Scenario[] {
   return Object.values(SCENARIOS);
+}
+
+export function registerScenario(scenario: Scenario) {
+  SCENARIOS[scenario.id] = scenario;
 }
 
