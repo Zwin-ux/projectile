@@ -1,9 +1,14 @@
 import { sql } from '@vercel/postgres';
 
 async function main() {
-    try {
-        console.log('Creating leaderboard table...');
-        await sql`
+  if (!process.env.POSTGRES_URL) {
+    console.warn('⚠️ POSTGRES_URL not found. Skipping database setup.');
+    return;
+  }
+
+  try {
+    console.log('Creating leaderboard table...');
+    await sql`
       CREATE TABLE IF NOT EXISTS leaderboard (
         id UUID PRIMARY KEY,
         player_name VARCHAR(255) NOT NULL,
@@ -15,11 +20,11 @@ async function main() {
         created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
       );
     `;
-        console.log('✅ Leaderboard table created successfully.');
-    } catch (error) {
-        console.error('❌ Error creating table:', error);
-        process.exit(1);
-    }
+    console.log('✅ Leaderboard table created successfully.');
+  } catch (error) {
+    console.error('❌ Error creating table:', error);
+    process.exit(1);
+  }
 }
 
 main();
