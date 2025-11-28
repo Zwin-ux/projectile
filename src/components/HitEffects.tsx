@@ -14,11 +14,11 @@ interface ParticleEffectProps {
 /**
  * Particle explosion effect for target hits
  */
-export function ParticleEffect({ 
-  position, 
-  color = '#06b6d4', 
+export function ParticleEffect({
+  position,
+  color = '#06b6d4',
   particleCount = 20,
-  onComplete 
+  onComplete
 }: ParticleEffectProps) {
   const particlesRef = useRef<THREE.Points>(null);
   const velocitiesRef = useRef<THREE.Vector3[]>([]);
@@ -31,7 +31,7 @@ export function ParticleEffect({
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.random() * Math.PI;
       const speed = 3 + Math.random() * 5;
-      
+
       return new THREE.Vector3(
         Math.sin(phi) * Math.cos(theta) * speed,
         Math.sin(phi) * Math.sin(theta) * speed,
@@ -85,9 +85,7 @@ export function ParticleEffect({
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={particleCount}
-          array={particlePositions}
-          itemSize={3}
+          args={[particlePositions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
