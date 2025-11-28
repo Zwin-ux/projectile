@@ -4,17 +4,19 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx scripts/setup-db.ts && next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.4.0",
+    "@vercel/postgres": "^0.10.0",
     "next": "^16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "three": "^0.180.0",
+    "zod": "^4.1.13",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
@@ -27,6 +29,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "tailwindcss": "^4",
+    "tsx": "^4.20.6",
     "typescript": "^5"
   }
 }

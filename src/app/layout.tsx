@@ -38,6 +38,7 @@ export default function RootLayout({
         <link rel="icon" href="/parabola-logo.png" sizes="any" />
       </head>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
         <RootLayoutClient>

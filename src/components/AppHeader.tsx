@@ -31,7 +31,6 @@ export default function AppHeader({ onOpenTutorial }: AppHeaderProps = {}) {
             <HeaderLink href="/play">Play</HeaderLink>
             <HeaderLink href="/build">Build</HeaderLink>
             <HeaderLink href="/stages">Stages</HeaderLink>
-            <HeaderLink href="/leaderboard">Leaderboard</HeaderLink>
             <HeaderLink href="/theory">Theory</HeaderLink>
             {onOpenTutorial && (
               <button

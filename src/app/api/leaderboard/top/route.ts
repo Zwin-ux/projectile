@@ -4,31 +4,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import type { LeaderboardEntry } from '../submit/route';
-
-// Import the shared leaderboard data
-// TODO: Replace with real database query
-// For now, we'll use a module-level shared array
-// This won't persist across server restarts but works for development
-
-// Shared storage reference (will be imported from a centralized store in production)
-let leaderboardDataCache: LeaderboardEntry[] = [];
-
-// Helper to access the shared data from the submit route
-// In production, this would be a database query
-function getLeaderboardData(): LeaderboardEntry[] {
-  // TODO: Replace with database query
-  // For development, this returns the module-level cache
-  return leaderboardDataCache;
-}
-
-// Helper to sync with submit route (development only)
-if (typeof global !== 'undefined') {
-  if (!(global as any).leaderboardData) {
-    (global as any).leaderboardData = [];
-  }
-  leaderboardDataCache = (global as any).leaderboardData;
-}
+import { sql } from '@vercel/postgres';
 
 export async function GET(request: NextRequest) {
   try {
@@ -37,26 +13,33 @@ export async function GET(request: NextRequest) {
     const stageId = searchParams.get('stageId');
     const limit = parseInt(searchParams.get('limit') || '10');
 
-    // Get all entries
-    let entries = getLeaderboardData();
+    // Build query
+    // Note: Vercel Postgres sql template literal handles parameterization safely
+    // However, for dynamic WHERE clauses, we need to be careful or use a query builder.
+    // For simplicity with standard sql tag, we'll fetch and filter or use basic logic.
+    // Actually, let's write a proper query.
 
-    // Filter by mode if specified
-    if (modeId) {
-      entries = entries.filter(e => e.modeId === modeId);
+    let result;
+
+    if (modeId && stageId) {
+      result = await sql`
+        SELECT id, player_name as "playerName", mode_id as "modeId", stage_id as "stageId", score, accuracy, created_at as "timestamp"
+        FROM leaderboard
+        WHERE mode_id = ${modeId} AND stage_id = ${stageId}
+        ORDER BY score DESC
+        LIMIT ${limit}
+      `;
+    } else {
+      // Fallback if filters missing (though frontend usually sends them)
+      result = await sql`
+        SELECT id, player_name as "playerName", mode_id as "modeId", stage_id as "stageId", score, accuracy, created_at as "timestamp"
+        FROM leaderboard
+        ORDER BY score DESC
+        LIMIT ${limit}
+      `;
     }
 
-    // Filter by stage if specified
-    if (stageId) {
-      entries = entries.filter(e => e.stageId === stageId);
-    }
-
-    // Sort by score (descending)
-    const sorted = [...entries].sort((a, b) => b.score - a.score);
-
-    // Limit results
-    const top = sorted.slice(0, limit);
-
-    return NextResponse.json({ entries: top }, { status: 200 });
+    return NextResponse.json({ entries: result.rows }, { status: 200 });
   } catch (error) {
     console.error('Error fetching leaderboard:', error);
     return NextResponse.json(

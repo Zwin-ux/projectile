@@ -3,7 +3,6 @@
 import { Suspense } from "react";
 import SceneWrapper from "@/components/SceneWrapper";
 import Link from "next/link";
-import LeaderboardPanel from "@/components/LeaderboardPanel";
 
 function PlayContent() {
   return (
@@ -23,9 +22,6 @@ function PlayContent() {
 
       <main className="relative flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4">
         <SceneWrapper />
-        <div className="hidden lg:block absolute bottom-4 right-4 z-10">
-          <LeaderboardPanel />
-        </div>
       </main>
 
       <footer className="border-t border-[#1e40af] bg-[#0a0a0a]">

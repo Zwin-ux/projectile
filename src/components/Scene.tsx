@@ -188,6 +188,8 @@ export default function Scene() {
     setHitEffects(prev => prev.filter(effect => effect.id !== id));
   }, []);
 
+  const handlePositionUpdate = useCallback(() => { }, []);
+
   return (
     <div className="flex flex-col gap-6 md:flex-row w-full h-full">
       {/* Viewport */}
@@ -224,7 +226,7 @@ export default function Scene() {
               isAnimating={isAnimating}
               projectileType={projectileType}
               onComplete={handleShotComplete}
-              onPositionUpdate={useCallback(() => { }, [])}
+              onPositionUpdate={handlePositionUpdate}
               onCheckHit={handleCheckHit}
             />
           )}

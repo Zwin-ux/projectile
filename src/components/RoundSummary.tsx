@@ -8,9 +8,11 @@
 import { useState } from 'react';
 import { useGameStore } from '@/store/gameStore';
 import { getMode, getStage } from '@/lib/gameConfig';
+import { useTelemetryStore } from '@/lib/telemetry/store';
 
 export default function RoundSummary() {
   const { finalStats, currentModeId, currentStageId, resetRound } = useGameStore();
+  const history = useTelemetryStore(s => s.history);
   const [playerName, setPlayerName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -18,6 +20,12 @@ export default function RoundSummary() {
   if (!finalStats || !currentModeId || !currentStageId) {
     return null;
   }
+
+  // Find best shot for this session/round
+  // We look at recent history matching the current mode/stage
+  const bestShot = history
+    .filter(s => s.modeId === currentModeId && s.stageId === currentStageId)
+    .sort((a, b) => b.score - a.score)[0];
 
   const mode = getMode(currentModeId);
   const stage = getStage(currentStageId);
@@ -37,7 +45,12 @@ export default function RoundSummary() {
           modeId: currentModeId,
           stageId: currentStageId,
           score: finalStats.score,
-          accuracy: finalStats.accuracy
+          accuracy: finalStats.accuracy,
+          replayData: bestShot?.result.trajectory.map(p => ({
+            p: p.position,
+            v: p.velocity,
+            t: p.time
+          }))
         })
       });
 

@@ -4,79 +4,48 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import type { GameModeId, StageId } from '@/lib/gameConfig';
+import { sql } from '@vercel/postgres';
+import { z } from 'zod';
 
-export interface LeaderboardEntry {
-  id: string;
-  playerName: string;
-  modeId: GameModeId;
-  stageId: StageId;
-  score: number;
-  accuracy: number;
-  timestamp: string;
-}
-
-// TODO: Replace with real database (PostgreSQL, MongoDB, etc.)
-// Using global for development to share data between routes
-if (typeof global !== 'undefined') {
-  if (!(global as any).leaderboardData) {
-    (global as any).leaderboardData = [];
-  }
-}
-
-function getLeaderboardData(): LeaderboardEntry[] {
-  return (global as any).leaderboardData || [];
-}
+// Validation schema
+const submitSchema = z.object({
+  playerName: z.string().min(1).max(50),
+  modeId: z.string(),
+  stageId: z.string(),
+  score: z.number().min(0),
+  accuracy: z.number().min(0).max(100),
+  replayData: z.array(z.object({
+    p: z.object({ x: z.number(), y: z.number(), z: z.number() }),
+    v: z.object({ x: z.number(), y: z.number(), z: z.number() }),
+    t: z.number()
+  })).optional()
+});
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { playerName, modeId, stageId, score, accuracy } = body;
 
-    // Validation
-    if (!playerName || typeof playerName !== 'string') {
+    // Validate input
+    const result = submitSchema.safeParse(body);
+
+    if (!result.success) {
       return NextResponse.json(
-        { error: 'Player name is required' },
+        { error: 'Invalid input', details: result.error.format() },
         { status: 400 }
       );
     }
 
-    if (!modeId || !stageId) {
-      return NextResponse.json(
-        { error: 'Mode and stage are required' },
-        { status: 400 }
-      );
-    }
+    const { playerName, modeId, stageId, score, accuracy, replayData } = result.data;
+    const id = crypto.randomUUID();
 
-    if (typeof score !== 'number' || score < 0) {
-      return NextResponse.json(
-        { error: 'Invalid score' },
-        { status: 400 }
-      );
-    }
+    // Insert into Vercel Postgres
+    // Note: We use JSON.stringify for replayData if it exists
+    await sql`
+      INSERT INTO leaderboard (id, player_name, mode_id, stage_id, score, accuracy, replay_data)
+      VALUES (${id}, ${playerName}, ${modeId}, ${stageId}, ${score}, ${accuracy}, ${replayData ? JSON.stringify(replayData) : null})
+    `;
 
-    if (typeof accuracy !== 'number' || accuracy < 0 || accuracy > 100) {
-      return NextResponse.json(
-        { error: 'Invalid accuracy' },
-        { status: 400 }
-      );
-    }
-
-    // Create entry
-    const entry: LeaderboardEntry = {
-      id: crypto.randomUUID(),
-      playerName: playerName.trim().substring(0, 20),
-      modeId,
-      stageId,
-      score,
-      accuracy,
-      timestamp: new Date().toISOString()
-    };
-
-    // Add to in-memory store
-    getLeaderboardData().push(entry);
-
-    return NextResponse.json({ ok: true, entry }, { status: 201 });
+    return NextResponse.json({ ok: true, id }, { status: 201 });
   } catch (error) {
     console.error('Error submitting score:', error);
     return NextResponse.json(

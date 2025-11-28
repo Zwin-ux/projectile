@@ -11,24 +11,25 @@ interface TrajectoryPreviewProps {
 }
 
 export default function TrajectoryPreview({ params, tier }: TrajectoryPreviewProps) {
-    // Tier 0: No preview
-    if (tier === 0) return null;
-
     // Calculate trajectory for preview
     // We use a slightly larger timestep for preview to save performance, or same if needed for accuracy
     const result = useMemo(() => {
+        if (tier === 0) return { trajectory: [], apex: { position: { x: 0, y: 0, z: 0 } } }; // Return dummy data if disabled
         return solveShot({
             ...params,
             timeStep: 0.05, // Coarser step for preview
             maxTime: 10 // Limit preview time
         });
-    }, [params]);
+    }, [params, tier]);
 
     const points = useMemo(() => {
         return result.trajectory.map(p => [p.position.x, p.position.y, p.position.z] as [number, number, number]);
     }, [result]);
 
     const apex = result.apex;
+
+    // Tier 0: No preview
+    if (tier === 0) return null;
 
     return (
         <group>
