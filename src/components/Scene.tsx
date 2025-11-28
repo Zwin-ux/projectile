@@ -194,23 +194,48 @@ export default function Scene() {
     <div className="flex flex-col gap-6 md:flex-row w-full h-full">
       {/* Viewport */}
       <div className="flex-1 min-h-[400px] md:min-h-[520px] rounded-md border border-[#1e40af] overflow-hidden relative">
-        <Canvas camera={{ position: scenario.camera.position as any, fov: scenario.camera.fov }}>
+        <Canvas shadows camera={{ position: scenario.camera.position as any, fov: scenario.camera.fov }}>
           <ScreenShakeWrapper />
-          <color attach="background" args={["#000000"]} />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <color attach="background" args={["#050505"]} />
+          <fog attach="fog" args={['#050505', 10, 100]} />
+
+          <ambientLight intensity={0.2} />
+          <directionalLight
+            position={[10, 20, 10]}
+            intensity={1.5}
+            castShadow
+            shadow-mapSize={[2048, 2048]}
+          />
+          <spotLight
+            position={[-10, 10, 0]}
+            angle={0.3}
+            penumbra={1}
+            intensity={1}
+            castShadow
+          />
 
           {/* Ground */}
-          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
             <planeGeometry args={[300, 300]} />
-            <meshStandardMaterial color={scenario.environment.groundColor} />
+            <meshStandardMaterial
+              color={scenario.environment.groundColor}
+              roughness={0.8}
+              metalness={0.2}
+            />
           </mesh>
+          <gridHelper args={[300, 30, "#1e40af", "#1e40af"]} position={[0, 0.01, 0]} />
 
           {/* Simple target markers */}
           {scenario.targets.map((t) => (
-            <mesh key={t.id} position={t.position as any}>
-              <sphereGeometry args={[1, 16, 16]} />
-              <meshStandardMaterial color="#06b6d4" emissive="#06b6d4" emissiveIntensity={0.3} />
+            <mesh key={t.id} position={t.position as any} castShadow receiveShadow>
+              <sphereGeometry args={[1, 32, 32]} />
+              <meshStandardMaterial
+                color="#06b6d4"
+                emissive="#06b6d4"
+                emissiveIntensity={0.5}
+                roughness={0.2}
+                metalness={0.8}
+              />
             </mesh>
           ))}
 
@@ -530,7 +555,10 @@ export default function Scene() {
                 key={p}
                 onClick={() => setProjectileType(p)}
                 disabled={isAnimating}
-                className="p-2 text-xs font-mono border rounded-md text-left"
+                className={`p-2 text-xs font-mono border rounded-md text-left transition-all duration-200 ${projectileType === p
+                    ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10 shadow-[0_0_10px_rgba(6,182,212,0.2)]'
+                    : 'border-[#1e40af] text-gray-400 hover:bg-white/5 hover:text-gray-200'
+                  }`}
               >
                 {p.toUpperCase()}
               </button>
