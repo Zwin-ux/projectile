@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState, useCallback } from "react";
-import { Canvas } from "@react-three/fiber";
+import { useMemo, useState, useCallback, useRef, useEffect } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from 'three';
 import { OrbitControls } from "@react-three/drei";
 import Projectile, { type ProjectileType, ProjectileMemo } from "./Projectile";
 import { solveShot } from "@/lib/simulation/solver";
@@ -19,6 +20,8 @@ import TheoryMode from "./TheoryMode";
 import { useTelemetryStore } from "@/lib/telemetry/store";
 import Leaderboard from "./Leaderboard";
 import { useChaos } from "@/hooks/useChaos";
+import { audioManager } from "@/lib/audio/AudioManager";
+import TutorialAssistant from "./TutorialAssistant";
 
 export default function Scene() {
   const [currentScenarioId, setCurrentScenarioId] = useState(DEFAULT_SCENARIO);
@@ -48,6 +51,10 @@ export default function Scene() {
   // Chaos Mode
   const [isChaosMode, setIsChaosMode] = useState(false);
   const { chaosParams, generateChaos, resetChaos } = useChaos();
+
+  // Visuals State
+  const [useActionCam, setUseActionCam] = useState(false);
+  const [impactFlash, setImpactFlash] = useState(0);
 
   const { registerHit, registerShot, score } = useGameStore();
 
@@ -117,6 +124,9 @@ export default function Scene() {
 
     setLastShotRecord(shotRecord);
     (registerShot as any)(shotRecord);
+
+    // Play Sound
+    audioManager.play('shoot');
   };
 
   const handleShotComplete = useCallback(() => {
@@ -171,6 +181,10 @@ export default function Scene() {
       if (!hitTargets.has(hit.targetId)) {
         setHitTargets(prev => new Set(prev).add(hit.targetId));
         registerHit(hit.targetId, hit.points);
+        audioManager.play('hit');
+
+        // Trigger generic screen flash
+        setImpactFlash(0.8);
 
         // Add visual effects
         const hitEffect = {
@@ -188,7 +202,23 @@ export default function Scene() {
     setHitEffects(prev => prev.filter(effect => effect.id !== id));
   }, []);
 
-  const handlePositionUpdate = useCallback(() => { }, []);
+  const projectilePosRef = useRef<[number, number, number]>([0, 0, 0]);
+
+  const handlePositionUpdate = useCallback((point: TrajectoryPoint) => {
+    projectilePosRef.current = [point.position.x, point.position.y, point.position.z];
+  }, []);
+
+  // Flash decay
+  useEffect(() => {
+    if (impactFlash > 0) {
+      const frame = requestAnimationFrame(() => setImpactFlash(prev => Math.max(0, prev - 0.05)));
+      return () => cancelAnimationFrame(frame);
+    }
+  }, [impactFlash]);
+
+  // Actually, useFrame in a wrapper is better for flash decay if we want it smooth 60fps, 
+  // but for a simple overlay, this useEffect might be janky. 
+  // Let's use a CSS transition for the flash opacity.
 
   return (
     <div className="flex flex-col gap-6 md:flex-row w-full h-full">
@@ -212,6 +242,12 @@ export default function Scene() {
             penumbra={1}
             intensity={1}
             castShadow
+          />
+          {/* Action Camera Controller */}
+          <ActionCameraController
+            active={useActionCam && isAnimating}
+            targetPositionRef={projectilePosRef}
+            defaultPosition={scenario.camera.position as any}
           />
 
           {/* Ground */}
@@ -278,6 +314,15 @@ export default function Scene() {
 
           <OrbitControls enableDamping dampingFactor={0.05} />
         </Canvas>
+
+
+
+        {/* Impact Flash Overlay */}
+        <div
+          className="absolute inset-0 bg-white pointer-events-none transition-opacity duration-75 ease-out z-20"
+          style={{ opacity: impactFlash }}
+          onTransitionEnd={() => setImpactFlash(0)}
+        />
 
         {/* Feedback Overlay */}
         {feedback && (
@@ -435,16 +480,27 @@ export default function Scene() {
                 {isChaosMode ? '[ DISABLE ]' : '[ ENABLE CHAOS ]'}
               </button>
               <button
-                onClick={resetToDefaults}
-                className="px-2 py-1 text-[11px] font-mono border border-[#1e40af] text-gray-200 hover:bg-white/5"
+                onClick={() => setUseActionCam(!useActionCam)}
+                className={`px-2 py-1 text-[11px] font-mono border rounded transition-colors ${useActionCam
+                  ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10'
+                  : 'border-gray-600 text-gray-400 hover:text-white'
+                  }`}
               >
-                [ RESET ]
+                {useActionCam ? '[ CAM: ACTION ]' : '[ CAM: STATIC ]'}
               </button>
             </div>
+            <button
+              onClick={resetToDefaults}
+              className="px-2 py-1 text-[11px] font-mono border border-[#1e40af] text-gray-200 hover:bg-white/5"
+            >
+              [ RESET ]
+            </button>
           </div>
         </div>
+      </div>
 
-        {isChaosMode && (
+      {
+        isChaosMode && (
           <div className="mb-3 p-2 border border-[#ef4444] bg-black/60 rounded text-center">
             <div className="text-[#ef4444] font-bold text-xs animate-pulse mb-1">
               {chaosParams.description}
@@ -454,142 +510,143 @@ export default function Scene() {
               <div>Gravity: {chaosParams.gravityScale.toFixed(2)}x</div>
             </div>
           </div>
-        )}
+        )
+      }
 
-        {/* Speed */}
-        <div className="mb-2">
-          <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
-            Speed: <span className="text-accent font-mono">{speed}</span> m/s
-            {isDrillMode && drillStep === 1 && <span className="ml-2 text-[#f59e0b] text-[10px]">[LOCKED]</span>}
-          </label>
-          <input
-            type="range"
-            min={scenario.defaultPhysics.speedRange[0]}
-            max={scenario.defaultPhysics.speedRange[1]}
-            step="1"
-            value={speed}
-            onChange={(e) => setSpeed(Number(e.target.value))}
-            disabled={isAnimating || (isDrillMode && drillStep === 1)}
-            className={`w-full slider ${isDrillMode && drillStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
-          />
+      {/* Speed */}
+      <div className="mb-2">
+        <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
+          Speed: <span className="text-accent font-mono">{speed}</span> m/s
+          {isDrillMode && drillStep === 1 && <span className="ml-2 text-[#f59e0b] text-[10px]">[LOCKED]</span>}
+        </label>
+        <input
+          type="range"
+          min={scenario.defaultPhysics.speedRange[0]}
+          max={scenario.defaultPhysics.speedRange[1]}
+          step="1"
+          value={speed}
+          onChange={(e) => setSpeed(Number(e.target.value))}
+          disabled={isAnimating || (isDrillMode && drillStep === 1)}
+          className={`w-full slider ${isDrillMode && drillStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+        />
+      </div>
+
+      {/* Angle */}
+      <div className="mb-2">
+        <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
+          Angle: <span className="text-accent font-mono">{angle}</span>°
+          {isDrillMode && drillStep === 2 && <span className="ml-2 text-[#f59e0b] text-[10px]">[LOCKED]</span>}
+        </label>
+        <input
+          type="range"
+          min={scenario.defaultPhysics.angleRange[0]}
+          max={scenario.defaultPhysics.angleRange[1]}
+          step="1"
+          value={angle}
+          onChange={(e) => setAngle(Number(e.target.value))}
+          disabled={isAnimating || (isDrillMode && drillStep === 2)}
+          className={`w-full slider ${isDrillMode && drillStep === 2 ? 'opacity-50 cursor-not-allowed' : ''}`}
+        />
+      </div>
+
+      {/* Gravity */}
+      <div>
+        <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
+          Gravity: <span className="text-accent font-mono">{gravity.toFixed(2)}</span> m/s²
+        </label>
+        <input
+          type="range"
+          min={0.1}
+          max={30}
+          step={0.1}
+          value={gravity}
+          onChange={(e) => setGravity(Number(e.target.value))}
+          disabled={isAnimating}
+          className="w-full slider"
+        />
+      </div>
+
+
+      {/* Preview Tier Selector */}
+      <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
+        <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Preview Tier</h3>
+        <div className="flex gap-1">
+          {[0, 1, 2, 3].map((t) => (
+            <button
+              key={t}
+              onClick={() => setPreviewTier(t as PreviewTier)}
+              className={`flex-1 p-1 text-xs font-mono border rounded-md ${previewTier === t ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10' : 'border-[#1e40af] text-gray-400 hover:bg-white/5'
+                }`}
+            >
+              {t}
+            </button>
+          ))}
         </div>
+      </div>
 
-        {/* Angle */}
-        <div className="mb-2">
-          <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
-            Angle: <span className="text-accent font-mono">{angle}</span>°
-            {isDrillMode && drillStep === 2 && <span className="ml-2 text-[#f59e0b] text-[10px]">[LOCKED]</span>}
-          </label>
-          <input
-            type="range"
-            min={scenario.defaultPhysics.angleRange[0]}
-            max={scenario.defaultPhysics.angleRange[1]}
-            step="1"
-            value={angle}
-            onChange={(e) => setAngle(Number(e.target.value))}
-            disabled={isAnimating || (isDrillMode && drillStep === 2)}
-            className={`w-full slider ${isDrillMode && drillStep === 2 ? 'opacity-50 cursor-not-allowed' : ''}`}
-          />
+      {/* Fire / Reset */}
+      <div className="flex gap-2">
+        <button
+          onClick={handleFire}
+          disabled={isAnimating}
+          className={`flex-1 px-3 py-3 text-sm font-mono border ${isAnimating ? 'border-[#1e40af] text-gray-500 cursor-not-allowed' : 'border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4]/10'
+            }`}
+        >
+          [ FIRE ]
+        </button>
+        <button
+          onClick={() => { setTrajectory([]); setIsAnimating(false); resetToDefaults(); }}
+          className="flex-1 px-3 py-3 text-sm font-mono border border-[#1e40af] text-gray-200 hover:bg-white/5"
+        >
+          [ RESET ]
+        </button>
+      </div>
+
+
+      {/* Projectile */}
+      <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
+        <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Projectile</h3>
+        <div className="grid grid-cols-2 gap-2">
+          {scenario.allowedProjectiles.map((p) => (
+            <button
+              key={p}
+              onClick={() => setProjectileType(p)}
+              disabled={isAnimating}
+              className={`p-2 text-xs font-mono border rounded-md text-left transition-all duration-200 ${projectileType === p
+                ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10 shadow-[0_0_10px_rgba(6,182,212,0.2)]'
+                : 'border-[#1e40af] text-gray-400 hover:bg-white/5 hover:text-gray-200'
+                }`}
+            >
+              {p.toUpperCase()}
+            </button>
+          ))}
         </div>
-
-        {/* Gravity */}
-        <div>
-          <label className="block text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">
-            Gravity: <span className="text-accent font-mono">{gravity.toFixed(2)}</span> m/s²
-          </label>
-          <input
-            type="range"
-            min={0.1}
-            max={30}
-            step={0.1}
-            value={gravity}
-            onChange={(e) => setGravity(Number(e.target.value))}
-            disabled={isAnimating}
-            className="w-full slider"
-          />
+      </div>        {/* Stats */}
+      <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
+        <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Trajectory Stats</h3>
+        <div className="space-y-2 text-sm">
+          {(() => {
+            if (!lastResult) return <div className="text-gray-500 text-xs">No shot data</div>;
+            return (
+              <>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400 text-xs">Max Height</span>
+                  <span className="font-mono text-gray-100 font-medium">{lastResult.apex.position.y.toFixed(2)} m</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400 text-xs">Range</span>
+                  <span className="font-mono text-gray-100 font-medium">{lastResult.impact.position.x.toFixed(2)} m</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400 text-xs">Flight Time</span>
+                  <span className="font-mono text-gray-100 font-medium">{lastResult.impact.time.toFixed(2)} s</span>
+                </div>
+              </>
+            );
+          })()}
         </div>
+      </div>
 
-
-        {/* Preview Tier Selector */}
-        <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
-          <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Preview Tier</h3>
-          <div className="flex gap-1">
-            {[0, 1, 2, 3].map((t) => (
-              <button
-                key={t}
-                onClick={() => setPreviewTier(t as PreviewTier)}
-                className={`flex-1 p-1 text-xs font-mono border rounded-md ${previewTier === t ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10' : 'border-[#1e40af] text-gray-400 hover:bg-white/5'
-                  }`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Fire / Reset */}
-        <div className="flex gap-2">
-          <button
-            onClick={handleFire}
-            disabled={isAnimating}
-            className={`flex-1 px-3 py-3 text-sm font-mono border ${isAnimating ? 'border-[#1e40af] text-gray-500 cursor-not-allowed' : 'border-[#06b6d4] text-[#06b6d4] hover:bg-[#06b6d4]/10'
-              }`}
-          >
-            [ FIRE ]
-          </button>
-          <button
-            onClick={() => { setTrajectory([]); setIsAnimating(false); resetToDefaults(); }}
-            className="flex-1 px-3 py-3 text-sm font-mono border border-[#1e40af] text-gray-200 hover:bg-white/5"
-          >
-            [ RESET ]
-          </button>
-        </div>
-
-
-        {/* Projectile */}
-        <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
-          <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Projectile</h3>
-          <div className="grid grid-cols-2 gap-2">
-            {scenario.allowedProjectiles.map((p) => (
-              <button
-                key={p}
-                onClick={() => setProjectileType(p)}
-                disabled={isAnimating}
-                className={`p-2 text-xs font-mono border rounded-md text-left transition-all duration-200 ${projectileType === p
-                    ? 'border-[#06b6d4] text-[#06b6d4] bg-[#06b6d4]/10 shadow-[0_0_10px_rgba(6,182,212,0.2)]'
-                    : 'border-[#1e40af] text-gray-400 hover:bg-white/5 hover:text-gray-200'
-                  }`}
-              >
-                {p.toUpperCase()}
-              </button>
-            ))}
-          </div>
-        </div>        {/* Stats */}
-        <div className="border border-[#1e40af] bg-black/40 rounded-md p-4">
-          <h3 className="text-xs font-mono uppercase tracking-widest text-[#1e40af] mb-2">Trajectory Stats</h3>
-          <div className="space-y-2 text-sm">
-            {(() => {
-              if (!lastResult) return <div className="text-gray-500 text-xs">No shot data</div>;
-              return (
-                <>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400 text-xs">Max Height</span>
-                    <span className="font-mono text-gray-100 font-medium">{lastResult.apex.position.y.toFixed(2)} m</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400 text-xs">Range</span>
-                    <span className="font-mono text-gray-100 font-medium">{lastResult.impact.position.x.toFixed(2)} m</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400 text-xs">Flight Time</span>
-                    <span className="font-mono text-gray-100 font-medium">{lastResult.impact.time.toFixed(2)} s</span>
-                  </div>
-                </>
-              );
-            })()}
-          </div>
-        </div>
-      </div >
 
       {/* Theory Mode Overlay */}
       {
@@ -607,6 +664,12 @@ export default function Scene() {
           <Leaderboard onClose={() => setShowLeaderboard(false)} />
         )
       }
+
+
+      <TutorialAssistant
+        shotHistory={useTelemetryStore(s => s.history)}
+        currentScenarioId={currentScenarioId}
+      />
     </div >
   );
 }
@@ -626,3 +689,30 @@ function ScreenShakeWrapper() {
 
   return null;
 }
+
+function ActionCameraController({ active, targetPositionRef, defaultPosition }: { active: boolean, targetPositionRef: React.MutableRefObject<[number, number, number]>, defaultPosition: [number, number, number] }) {
+  useFrame(({ camera }) => {
+    if (active && targetPositionRef.current) {
+      const [x, y, z] = targetPositionRef.current;
+      // Position camera behind and slightly above projectile
+      const targetPos = new THREE.Vector3(x, y, z);
+      const offset = new THREE.Vector3(-10, 5, 0); // Side view offset
+      // Or maybe dynamic offset based on velocity? For now, static offset relative to projectile
+
+      // Smooth lerp
+      const desiredPos = new THREE.Vector3(x - 8, y + 4, z + 8); // Quarter view
+      camera.position.lerp(desiredPos, 0.1);
+      camera.lookAt(targetPos);
+    } else {
+      // Return to default
+      // note: OrbitControls might fight this. 
+      // We might need to disable OrbitControls when ActionCam is active?
+      // For now, let's just let OrbitControls handle the "inactive" state if the user moved it, 
+      // OR reset it. Resetting is jarring.
+      // Let's NOT reset on inactive, just let OrbitControls take over.
+      // BUT, OrbitControls saves the target.
+    }
+  });
+  return null;
+}
+

@@ -8,6 +8,9 @@ import { getAllStages } from "@/lib/stageStorage";
 export default function Home() {
   const score = useGameStore((s) => s.score);
   const maxStreak = useGameStore((s) => s.maxStreak);
+  const totalXp = useGameStore((s) => s.totalXp);
+  const rank = useGameStore((s) => s.rank);
+  const nextRankXp = useGameStore((s) => s.nextRankXp);
 
   const [customStageCount, setCustomStageCount] = useState(0);
   const [stagesCompleted, setStagesCompleted] = useState(0);
@@ -188,6 +191,27 @@ export default function Home() {
                 <h2 className="text-sm font-bold tracking-widest text-white uppercase">
                   OPERATOR_METRICS
                 </h2>
+              </div>
+
+              {/* Rank Card */}
+              <div className="border border-[#1e40af] bg-[#0a0a0a] p-4 mb-4 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-2 text-[10px] text-gray-600 font-mono">ID: REF-001</div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[#06b6d4] mb-1">
+                  PILOT_RANK
+                </div>
+                <div className="text-2xl sm:text-3xl font-black tracking-tighter text-white mb-2">
+                  {rank}
+                </div>
+                <div className="w-full h-1 bg-gray-800 mt-2">
+                  <div
+                    className="h-full bg-[#06b6d4] transition-all duration-1000"
+                    style={{ width: `${Math.min(100, (totalXp / nextRankXp) * 100)}%` }}
+                  ></div>
+                </div>
+                <div className="flex justify-between mt-1 text-[10px] font-mono text-gray-500">
+                  <span>XP: {totalXp}</span>
+                  <span>NEXT: {nextRankXp === Infinity ? 'MAX' : nextRankXp}</span>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">

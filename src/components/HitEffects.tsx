@@ -30,7 +30,7 @@ export function ParticleEffect({
     velocitiesRef.current = Array.from({ length: particleCount }, () => {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.random() * Math.PI;
-      const speed = 3 + Math.random() * 5;
+      const speed = 5 + Math.random() * 8; // Faster explosion
 
       return new THREE.Vector3(
         Math.sin(phi) * Math.cos(theta) * speed,
@@ -63,7 +63,7 @@ export function ParticleEffect({
       );
 
       // Apply gravity
-      velocities[i].y -= 9.81 * delta;
+      velocities[i].y -= 15 * delta; // Heavier gravity for snappier feel
     }
 
     positions.needsUpdate = true;
@@ -124,16 +124,23 @@ export function HitMarker({ position, points, onComplete }: HitMarkerProps) {
       return;
     }
 
-    // Float upward
-    meshRef.current.position.y += delta * 2;
+    // Float upward with ease out
+    meshRef.current.position.y += delta * (2 * (1 - lifetimeRef.current / maxLifetime));
 
     // Fade out
     const material = meshRef.current.material as THREE.MeshBasicMaterial;
-    material.opacity = 1 - (lifetimeRef.current / maxLifetime);
+    material.opacity = 1 - Math.pow(lifetimeRef.current / maxLifetime, 3); // Cubic ease out
 
-    // Scale pulse
-    const scale = 1 + Math.sin(lifetimeRef.current * 10) * 0.1;
-    meshRef.current.scale.setScalar(scale);
+    // Scale pulse (pop in)
+    const popTime = 0.2;
+    if (lifetimeRef.current < popTime) {
+      // Elastic pop
+      const t = lifetimeRef.current / popTime;
+      const scale = 1 + Math.sin(t * Math.PI) * 0.5;
+      meshRef.current.scale.setScalar(scale);
+    } else {
+      meshRef.current.scale.setScalar(1);
+    }
   });
 
   return (

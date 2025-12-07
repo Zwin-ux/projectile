@@ -22,6 +22,22 @@ export interface FinalStats {
   streak: number;
 }
 
+export const XP_THRESHOLDS = {
+  ROOKIE: 0,
+  GUNNER: 1000,
+  SHARPSHOOTER: 5000,
+  DEADEYE: 10000,
+  MASTER: 25000
+};
+
+export function getRank(xp: number): { rank: string, next: number } {
+  if (xp >= XP_THRESHOLDS.MASTER) return { rank: 'BALLISTICS MASTER', next: Infinity };
+  if (xp >= XP_THRESHOLDS.DEADEYE) return { rank: 'DEADEYE', next: XP_THRESHOLDS.MASTER };
+  if (xp >= XP_THRESHOLDS.SHARPSHOOTER) return { rank: 'SHARPSHOOTER', next: XP_THRESHOLDS.DEADEYE };
+  if (xp >= XP_THRESHOLDS.GUNNER) return { rank: 'GUNNER', next: XP_THRESHOLDS.SHARPSHOOTER };
+  return { rank: 'ROOKIE', next: XP_THRESHOLDS.GUNNER };
+}
+
 interface GameState {
   // Current round configuration
   currentModeId: GameModeId | null;
@@ -41,6 +57,11 @@ interface GameState {
 
   // Post-round
   finalStats: FinalStats | null;
+
+  // Progression
+  totalXp: number;
+  rank: string;
+  nextRankXp: number;
 
   // Actions
   startRound: (modeId: GameModeId, stageId: StageId) => void;
@@ -64,6 +85,11 @@ export const useGameStore = create<GameState>((set, get) => ({
   currentStreak: 0,
   maxStreak: 0,
   finalStats: null,
+
+  // Load from local storage or default
+  totalXp: typeof window !== 'undefined' ? Number(localStorage.getItem('parabola_xp') || 0) : 0,
+  rank: 'ROOKIE',
+  nextRankXp: 1000,
 
   startRound: (modeId: GameModeId, stageId: StageId) => {
     set({
@@ -153,8 +179,20 @@ export const useGameStore = create<GameState>((set, get) => ({
       ? Math.round((state.hits.length / state.totalShotsFired) * 100)
       : 0;
 
+    // Update XP
+    const newTotalXp = state.totalXp + state.score;
+    const { rank, next } = getRank(newTotalXp);
+
+    // Persist
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('parabola_xp', newTotalXp.toString());
+    }
+
     set({
       isRoundActive: false,
+      totalXp: newTotalXp,
+      rank,
+      nextRankXp: next,
       finalStats: {
         score: state.score,
         accuracy,
