@@ -1,7 +1,17 @@
 # Parabola
 
 Physics-based projectile motion simulator with realistic 3D visualization. Launch different projectiles and watch them follow authentic trajectories based on kinematic equations.
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
+https://parabola-sand.vercel.app/
 
+PLAY THE GAME!
 ## Features
 
 - Sport-specific modes: Basketball, Shooting Range, Soccer, Classic Targets
